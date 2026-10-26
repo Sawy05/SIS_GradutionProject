@@ -21,5 +21,5 @@ yarn-error.log*
 *.swo
 
 # Large database files
-backend/data/*.db
+# backend/data/*.db
 *.sqlite3
