@@ -1,0 +1,8 @@
+{
+  "name": "Uni Assist SIS",
+  "description": "Smart Student Information System, Course Recommender, Academic Analytics, and AI Tutor",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
