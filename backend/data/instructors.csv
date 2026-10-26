@@ -1,0 +1,7 @@
+instructor_id,instructor_name,department_id,email,office_location
+INST-TAMER,Prof. Dr. Tamer Helmy,10,tamer.helmy@anu.edu.eg,Dean Office - Room 501
+INST-ZEKRI,Assoc. Prof. Dr. Ahmed Sherif Zekri,11,ahmed.zekri@anu.edu.eg,FCDS Building - Room 402
+INST-ROSTOVA,Dr. Elena Rostova,8,elena.rostova@anu.edu.eg,Cybersecurity Dept - Room 310
+INST-MANSOOR,Dr. Tariq Al-Mansoor,9,tariq.mansoor@anu.edu.eg,Intelligent Systems - Room 312
+INST-JENKINS,Dr. Sarah Jenkins,10,sarah.jenkins@anu.edu.eg,Data Science Dept - Room 314
+INST-VANCE,Dr. Marcus Vance,11,marcus.vance@anu.edu.eg,Software Industry - Room 316

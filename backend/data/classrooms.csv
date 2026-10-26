@@ -1,0 +1,12 @@
+room_id,building,room_number,capacity,room_type
+FCDS-LH101,FCDS Main Building,LH101,200,Auditorium
+FCDS-LH102,FCDS Main Building,LH102,200,Auditorium
+FCDS-LH201,FCDS Main Building,LH201,150,Lecture Hall
+FCDS-LH202,FCDS Main Building,LH202,150,Lecture Hall
+FCDS-CR301,FCDS Main Building,CR301,80,Classroom
+FCDS-CR302,FCDS Main Building,CR302,80,Classroom
+FCDS-CR303,FCDS Main Building,CR303,80,Classroom
+FCDS-LAB401,FCDS Tech Wing,LAB401,45,Computer Lab
+FCDS-LAB402,FCDS Tech Wing,LAB402,45,Computer Lab
+FCDS-LAB403,FCDS Tech Wing,LAB403,45,AI & Robotics Lab
+FCDS-LAB404,FCDS Tech Wing,LAB404,45,Cyber Security Lab

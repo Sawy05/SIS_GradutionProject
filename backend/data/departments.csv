@@ -1,0 +1,5 @@
+department_id,department_name,code_prefix,dean,description,college_id
+8,Cyber Security Program,,Prof. Dr. Tamer Helmy,"Cybersecurity, Network Defense, Cryptography, and Threat Intelligence.",3
+9,Intelligent Systems,,Prof. Dr. Tamer Helmy,"Artificial Intelligence, Robotics, Autonomous Agents, and Cognitive Systems.",3
+10,Data Science & Artificial Intelligence,,Prof. Dr. Tamer Helmy,"Big Data Engineering, Machine Learning, Predictive Analytics, and Deep Learning.",3
+11,Software Industry & Multimedia (SIM),,Assoc. Prof. Dr. Ahmed Sherif Zekri,"Software Engineering Architecture, Cloud Computing, Full-Stack Development, and Multimedia.",3

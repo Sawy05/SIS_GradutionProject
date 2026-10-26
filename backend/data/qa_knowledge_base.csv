@@ -1,0 +1,1217 @@
+qa_id,category,prompt,returnstring,mbti,learning,temperature,tags
+1,Data Structures,What is the difference between a stack and a queue in data structures?,"A Stack follows the LIFO (Last-In, First-Out) principle, where insertions and deletions happen at one end called the top (common operations: push, pop). A Queue follows the FIFO (First-In, First-Out) principle, where elements are inserted at the rear (enqueue) and removed from the front (dequeue). Common applications: stack is used in recursion call stacks and undo actions, while queue is used in BFS traversal and CPU scheduling.",INTJ,Visual,0.3,"cs,datastructures,stack,queue"
+2,Algorithms,Explain QuickSort algorithm and its time complexity.,"QuickSort is a divide-and-conquer sorting algorithm. It selects a 'pivot' element and partitions the array such that elements smaller than the pivot go to the left and larger elements go to the right. It then recursively sorts both subarrays. Average and best-case time complexity is O(N log N). Worst-case complexity is O(N^2) when the pivot is consistently the minimum or maximum element, though randomized pivot selection mitigates this.",INTP,Reading/Writing,0.4,"algorithms,sorting,quicksort,complexity"
+3,Algorithms,What is Dynamic Programming and when should it be used?,Dynamic Programming (DP) is an optimization technique that solves complex problems by breaking them down into overlapping subproblems and storing subproblem solutions (memoization or tabulation) to prevent redundant computations. Two key properties required: Optimal Substructure (an optimal solution contains optimal sub-solutions) and Overlapping Subproblems (the same subproblems are computed repeatedly).,INTJ,Kinesthetic,0.3,"algorithms,dp,optimization,dynamic_programming"
+4,Networking,What is the difference between TCP and UDP?,"TCP (Transmission Control Protocol) is connection-oriented, reliable, guarantees in-order packet delivery via three-way handshaking, acknowledgments, and flow control (windowing). UDP (User Datagram Protocol) is connectionless, lightweight, and transmits packets without guarantees or handshakes, prioritizing low latency. TCP is used for Web (HTTP/HTTPS) and file transfers, while UDP is preferred for live video streaming, DNS queries, and online gaming.",ISTJ,Visual,0.3,"networking,tcp,udp,protocols"
+5,Databases,Explain SQL normalization up to Third Normal Form (3NF).,"Database normalization minimizes data redundancy and prevents insertion/update/deletion anomalies: 1NF requires atomic values in every column with no repeating groups; 2NF satisfies 1NF and removes partial dependencies (non-key attributes must depend on the whole composite primary key); 3NF satisfies 2NF and removes transitive dependencies (non-key attributes must depend solely on the primary key, not another non-key attribute).",ISTJ,Reading/Writing,0.3,"databases,sql,normalization,3nf"
+6,Databases,What are ACID properties in database management systems?,ACID defines reliability in database transactions: Atomicity ensures the transaction is all-or-nothing; Consistency guarantees valid state transitions adhering to constraints; Isolation ensures concurrent transactions execute independently without interference; Durability ensures committed transactions survive system crashes or power failures.,ENTJ,Reading/Writing,0.2,"databases,acid,transactions,sql"
+7,Artificial Intelligence,How does backpropagation work in deep learning neural networks?,"Backpropagation calculates the gradient of the loss function with respect to each weight in a neural network using the multivariable calculus chain rule. During forward pass, inputs produce predicted activations and a loss is computed. In backward pass, error gradients propagate backwards from output layer to input layer, enabling gradient descent optimizers (like Adam or SGD) to update weights in the direction that minimizes loss.",INTP,Visual,0.4,"ai,deeplearning,neuralnetworks,backpropagation"
+8,Artificial Intelligence,What is the difference between CNN and Transformer architectures?,"CNNs (Convolutional Neural Networks) utilize spatial weight-sharing kernels to extract local inductive biases, excelling at image processing and 2D feature hierarchies. Transformers eliminate recurrence and convolutions, utilizing Self-Attention mechanisms to weigh relationships between all tokens across an entire sequence simultaneously, dominating NLP and large multimodal models.",INTJ,Visual,0.4,"ai,transformers,cnn,deeplearning"
+9,Cybersecurity,Explain the difference between Symmetric and Asymmetric encryption.,"Symmetric encryption uses a single shared secret key for both encryption and decryption (e.g., AES-256), offering ultra-fast throughput for bulk data. Asymmetric encryption uses a mathematically linked keypair: a public key for encryption and a private key for decryption (e.g., RSA, ECC). Asymmetric is commonly used for key exchange, SSL/TLS handshakes, and digital signatures.",ENTP,Visual,0.3,"security,cryptography,encryption,aes,rsa"
+10,Cybersecurity,What is SQL Injection (SQLi) and how is it prevented?,"SQL Injection occurs when untrusted user input is directly concatenated into a dynamic SQL query, altering the query structure to execute arbitrary SQL commands. Prevention requires Parameterized Queries (Prepared Statements) or ORMs, strict input validation, stored procedures with type constraints, and adhering to the principle of least privilege on database user accounts.",ISTP,Kinesthetic,0.2,"security,sqli,owasp,web"
+11,University Policy,What is the university policy on minimum CGPA for academic good standing?,"To maintain Academic Good Standing, undergraduate students must maintain a cumulative GPA of at least 2.00 on a 4.00 scale. If a student's CGPA drops below 2.00 at the end of a regular semester, they are placed on Academic Warning. If the CGPA remains below 2.00 for two consecutive semesters, the student is placed on Academic Probation with a 12-credit enrollment cap.",ESTJ,Reading/Writing,0.1,"sis,policy,gpa,standing,probation"
+12,University Policy,What is the procedure and deadline to drop a course without academic penalty?,"Students may drop courses with 100% tuition adjustment and no grade record on their transcript during the official Add/Drop period (first two weeks of the semester). After the Add/Drop deadline until the end of the 10th week, students may submit an official Course Withdrawal request via the Student Portal; the course will appear with a grade of 'W' (Withdrawn), which carries zero credit points and does not impact cumulative GPA.",ISFJ,Auditory,0.1,"sis,policy,drop,withdraw,deadline"
+13,University Policy,What are the prerequisites to enroll in Senior Capstone Project I (CS402)?,"Enrolling in Senior Capstone Project I (CS402) requires Senior Year Level (Year 4 status, with at least 90 earned credit hours) and a passing grade (C or higher) in CS303 (Software Engineering Methodologies) and CS301 (Operating Systems Internals). Department head approval is also required for approved capstone topic proposals.",ENFJ,Reading/Writing,0.2,"sis,policy,capstone,prerequisites"
+14,Course Recommender,How does the SIS Course Recommendation engine score and rank courses?,"The Course Recommendation engine computes a multi-attribute match score (0-100) based on: Department alignment (+50 pts for major core courses), Year-level suitability (+20 pts for current year level, +10 for earlier year remedial), Prerequisite verification (+15 pts for fully passed prerequisites, disqualifies locked courses), Workload credit balancing (+10 pts for manageable 3-credit units), and Historical performance in related department subject areas.",INTJ,Visual,0.2,"recommender,algorithm,scoring,sis"
+15,Python & OOP,Explain the difference between deepcopy and shallow copy in Python.,"A shallow copy creates a new object but inserts references into it to the objects found in the original. A deepcopy creates a new object and recursively copies all nested objects found in the original, ensuring changes to nested elements do not mutate the source.",INTJ,Visual,0.3,"python_&_oop,academic,question"
+16,Python & OOP,Explain the difference between deepcopy and shallow copy in Python.,"A shallow copy creates a new object but inserts references into it to the objects found in the original. A deepcopy creates a new object and recursively copies all nested objects found in the original, ensuring changes to nested elements do not mutate the source.",ENTP,Auditory,0.4,"python_&_oop,academic,question"
+17,Python & OOP,Explain the difference between deepcopy and shallow copy in Python.,"A shallow copy creates a new object but inserts references into it to the objects found in the original. A deepcopy creates a new object and recursively copies all nested objects found in the original, ensuring changes to nested elements do not mutate the source.",INFJ,Reading/Writing,0.5,"python_&_oop,academic,question"
+18,Python & OOP,Explain the difference between deepcopy and shallow copy in Python.,"A shallow copy creates a new object but inserts references into it to the objects found in the original. A deepcopy creates a new object and recursively copies all nested objects found in the original, ensuring changes to nested elements do not mutate the source.",ISTJ,Kinesthetic,0.6000000000000001,"python_&_oop,academic,question"
+19,Python & OOP,Explain the difference between deepcopy and shallow copy in Python.,"A shallow copy creates a new object but inserts references into it to the objects found in the original. A deepcopy creates a new object and recursively copies all nested objects found in the original, ensuring changes to nested elements do not mutate the source.",ENFP,Visual,0.7,"python_&_oop,academic,question"
+20,Python & OOP,What are Python decorators and how do they work?,"Decorators are higher-order functions that take another function as an argument, extend or modify its behavior without modifying the original code, and return a callable wrapper function. Commonly used for logging, auth validation, and caching.",INTJ,Visual,0.3,"python_&_oop,academic,question"
+21,Python & OOP,What are Python decorators and how do they work?,"Decorators are higher-order functions that take another function as an argument, extend or modify its behavior without modifying the original code, and return a callable wrapper function. Commonly used for logging, auth validation, and caching.",ENTP,Auditory,0.4,"python_&_oop,academic,question"
+22,Python & OOP,What are Python decorators and how do they work?,"Decorators are higher-order functions that take another function as an argument, extend or modify its behavior without modifying the original code, and return a callable wrapper function. Commonly used for logging, auth validation, and caching.",INFJ,Reading/Writing,0.5,"python_&_oop,academic,question"
+23,Python & OOP,What are Python decorators and how do they work?,"Decorators are higher-order functions that take another function as an argument, extend or modify its behavior without modifying the original code, and return a callable wrapper function. Commonly used for logging, auth validation, and caching.",ISTJ,Kinesthetic,0.6000000000000001,"python_&_oop,academic,question"
+24,Python & OOP,What are Python decorators and how do they work?,"Decorators are higher-order functions that take another function as an argument, extend or modify its behavior without modifying the original code, and return a callable wrapper function. Commonly used for logging, auth validation, and caching.",ENFP,Visual,0.7,"python_&_oop,academic,question"
+25,Python & OOP,What is the Global Interpreter Lock (GIL) in CPython?,"The GIL is a mutex that prevents multiple native OS threads from executing Python bytecodes simultaneously within a single process. It guarantees memory safety for reference counting, but limits CPU-bound multi-threading, requiring multiprocessing for true multi-core parallel computation.",INTJ,Visual,0.3,"python_&_oop,academic,question"
+26,Python & OOP,What is the Global Interpreter Lock (GIL) in CPython?,"The GIL is a mutex that prevents multiple native OS threads from executing Python bytecodes simultaneously within a single process. It guarantees memory safety for reference counting, but limits CPU-bound multi-threading, requiring multiprocessing for true multi-core parallel computation.",ENTP,Auditory,0.4,"python_&_oop,academic,question"
+27,Python & OOP,What is the Global Interpreter Lock (GIL) in CPython?,"The GIL is a mutex that prevents multiple native OS threads from executing Python bytecodes simultaneously within a single process. It guarantees memory safety for reference counting, but limits CPU-bound multi-threading, requiring multiprocessing for true multi-core parallel computation.",INFJ,Reading/Writing,0.5,"python_&_oop,academic,question"
+28,Python & OOP,What is the Global Interpreter Lock (GIL) in CPython?,"The GIL is a mutex that prevents multiple native OS threads from executing Python bytecodes simultaneously within a single process. It guarantees memory safety for reference counting, but limits CPU-bound multi-threading, requiring multiprocessing for true multi-core parallel computation.",ISTJ,Kinesthetic,0.6000000000000001,"python_&_oop,academic,question"
+29,Python & OOP,What is the Global Interpreter Lock (GIL) in CPython?,"The GIL is a mutex that prevents multiple native OS threads from executing Python bytecodes simultaneously within a single process. It guarantees memory safety for reference counting, but limits CPU-bound multi-threading, requiring multiprocessing for true multi-core parallel computation.",ENFP,Visual,0.7,"python_&_oop,academic,question"
+30,Cloud & DevOps,What is the difference between Docker containers and Virtual Machines?,"Virtual Machines virtualize physical hardware including the guest OS kernel via a hypervisor, consuming significant memory and boot time. Docker containers virtualize the operating system kernel, sharing the host kernel with isolated namespaces and cgroups, making them lightweight and rapid to spin up.",INTJ,Visual,0.3,"cloud_&_devops,academic,question"
+31,Cloud & DevOps,What is the difference between Docker containers and Virtual Machines?,"Virtual Machines virtualize physical hardware including the guest OS kernel via a hypervisor, consuming significant memory and boot time. Docker containers virtualize the operating system kernel, sharing the host kernel with isolated namespaces and cgroups, making them lightweight and rapid to spin up.",ENTP,Auditory,0.4,"cloud_&_devops,academic,question"
+32,Cloud & DevOps,What is the difference between Docker containers and Virtual Machines?,"Virtual Machines virtualize physical hardware including the guest OS kernel via a hypervisor, consuming significant memory and boot time. Docker containers virtualize the operating system kernel, sharing the host kernel with isolated namespaces and cgroups, making them lightweight and rapid to spin up.",INFJ,Reading/Writing,0.5,"cloud_&_devops,academic,question"
+33,Cloud & DevOps,What is the difference between Docker containers and Virtual Machines?,"Virtual Machines virtualize physical hardware including the guest OS kernel via a hypervisor, consuming significant memory and boot time. Docker containers virtualize the operating system kernel, sharing the host kernel with isolated namespaces and cgroups, making them lightweight and rapid to spin up.",ISTJ,Kinesthetic,0.6000000000000001,"cloud_&_devops,academic,question"
+34,Cloud & DevOps,What is the difference between Docker containers and Virtual Machines?,"Virtual Machines virtualize physical hardware including the guest OS kernel via a hypervisor, consuming significant memory and boot time. Docker containers virtualize the operating system kernel, sharing the host kernel with isolated namespaces and cgroups, making them lightweight and rapid to spin up.",ENFP,Visual,0.7,"cloud_&_devops,academic,question"
+35,Cloud & DevOps,Explain the concept of Continuous Integration and Continuous Deployment (CI/CD).,"CI automatically merges and tests developer code changes in a shared repository continuously to detect regressions early. CD automatically stages or deploys verified artifacts to staging and production environments, ensuring reliable, automated release cycles.",INTJ,Visual,0.3,"cloud_&_devops,academic,question"
+36,Cloud & DevOps,Explain the concept of Continuous Integration and Continuous Deployment (CI/CD).,"CI automatically merges and tests developer code changes in a shared repository continuously to detect regressions early. CD automatically stages or deploys verified artifacts to staging and production environments, ensuring reliable, automated release cycles.",ENTP,Auditory,0.4,"cloud_&_devops,academic,question"
+37,Cloud & DevOps,Explain the concept of Continuous Integration and Continuous Deployment (CI/CD).,"CI automatically merges and tests developer code changes in a shared repository continuously to detect regressions early. CD automatically stages or deploys verified artifacts to staging and production environments, ensuring reliable, automated release cycles.",INFJ,Reading/Writing,0.5,"cloud_&_devops,academic,question"
+38,Cloud & DevOps,Explain the concept of Continuous Integration and Continuous Deployment (CI/CD).,"CI automatically merges and tests developer code changes in a shared repository continuously to detect regressions early. CD automatically stages or deploys verified artifacts to staging and production environments, ensuring reliable, automated release cycles.",ISTJ,Kinesthetic,0.6000000000000001,"cloud_&_devops,academic,question"
+39,Cloud & DevOps,Explain the concept of Continuous Integration and Continuous Deployment (CI/CD).,"CI automatically merges and tests developer code changes in a shared repository continuously to detect regressions early. CD automatically stages or deploys verified artifacts to staging and production environments, ensuring reliable, automated release cycles.",ENFP,Visual,0.7,"cloud_&_devops,academic,question"
+40,Cloud & DevOps,What is Kubernetes and how does Pod scheduling work?,"Kubernetes is a container orchestration platform. A Pod is the smallest deployable compute unit. The kube-scheduler selects an optimal node for unscheduled pods based on resource requirements, affinity/anti-affinity specifications, taints, and tolerations.",INTJ,Visual,0.3,"cloud_&_devops,academic,question"
+41,Cloud & DevOps,What is Kubernetes and how does Pod scheduling work?,"Kubernetes is a container orchestration platform. A Pod is the smallest deployable compute unit. The kube-scheduler selects an optimal node for unscheduled pods based on resource requirements, affinity/anti-affinity specifications, taints, and tolerations.",ENTP,Auditory,0.4,"cloud_&_devops,academic,question"
+42,Cloud & DevOps,What is Kubernetes and how does Pod scheduling work?,"Kubernetes is a container orchestration platform. A Pod is the smallest deployable compute unit. The kube-scheduler selects an optimal node for unscheduled pods based on resource requirements, affinity/anti-affinity specifications, taints, and tolerations.",INFJ,Reading/Writing,0.5,"cloud_&_devops,academic,question"
+43,Cloud & DevOps,What is Kubernetes and how does Pod scheduling work?,"Kubernetes is a container orchestration platform. A Pod is the smallest deployable compute unit. The kube-scheduler selects an optimal node for unscheduled pods based on resource requirements, affinity/anti-affinity specifications, taints, and tolerations.",ISTJ,Kinesthetic,0.6000000000000001,"cloud_&_devops,academic,question"
+44,Cloud & DevOps,What is Kubernetes and how does Pod scheduling work?,"Kubernetes is a container orchestration platform. A Pod is the smallest deployable compute unit. The kube-scheduler selects an optimal node for unscheduled pods based on resource requirements, affinity/anti-affinity specifications, taints, and tolerations.",ENFP,Visual,0.7,"cloud_&_devops,academic,question"
+45,Data Science & Machine Learning,What is the difference between Precision and Recall?,Precision is the fraction of true positive predictions among all predicted positives (True Positives / (True Positives + False Positives)). Recall is the fraction of true positives identified among all actual positives (True Positives / (True Positives + False Negatives)). The F1-score is the harmonic mean of both.,INTJ,Visual,0.3,"data_science_&_machine_learning,academic,question"
+46,Data Science & Machine Learning,What is the difference between Precision and Recall?,Precision is the fraction of true positive predictions among all predicted positives (True Positives / (True Positives + False Positives)). Recall is the fraction of true positives identified among all actual positives (True Positives / (True Positives + False Negatives)). The F1-score is the harmonic mean of both.,ENTP,Auditory,0.4,"data_science_&_machine_learning,academic,question"
+47,Data Science & Machine Learning,What is the difference between Precision and Recall?,Precision is the fraction of true positive predictions among all predicted positives (True Positives / (True Positives + False Positives)). Recall is the fraction of true positives identified among all actual positives (True Positives / (True Positives + False Negatives)). The F1-score is the harmonic mean of both.,INFJ,Reading/Writing,0.5,"data_science_&_machine_learning,academic,question"
+48,Data Science & Machine Learning,What is the difference between Precision and Recall?,Precision is the fraction of true positive predictions among all predicted positives (True Positives / (True Positives + False Positives)). Recall is the fraction of true positives identified among all actual positives (True Positives / (True Positives + False Negatives)). The F1-score is the harmonic mean of both.,ISTJ,Kinesthetic,0.6000000000000001,"data_science_&_machine_learning,academic,question"
+49,Data Science & Machine Learning,What is the difference between Precision and Recall?,Precision is the fraction of true positive predictions among all predicted positives (True Positives / (True Positives + False Positives)). Recall is the fraction of true positives identified among all actual positives (True Positives / (True Positives + False Negatives)). The F1-score is the harmonic mean of both.,ENFP,Visual,0.7,"data_science_&_machine_learning,academic,question"
+50,Data Science & Machine Learning,What is overfitting and how do you prevent it in machine learning models?,"Overfitting occurs when a model learns noise and idiosyncratic details of the training data rather than general patterns, resulting in low training error but high test error. Prevention methods include Cross-Validation, L1/L2 Regularization, Dropout in neural nets, pruning trees, and collecting more training data.",INTJ,Visual,0.3,"data_science_&_machine_learning,academic,question"
+51,Data Science & Machine Learning,What is overfitting and how do you prevent it in machine learning models?,"Overfitting occurs when a model learns noise and idiosyncratic details of the training data rather than general patterns, resulting in low training error but high test error. Prevention methods include Cross-Validation, L1/L2 Regularization, Dropout in neural nets, pruning trees, and collecting more training data.",ENTP,Auditory,0.4,"data_science_&_machine_learning,academic,question"
+52,Data Science & Machine Learning,What is overfitting and how do you prevent it in machine learning models?,"Overfitting occurs when a model learns noise and idiosyncratic details of the training data rather than general patterns, resulting in low training error but high test error. Prevention methods include Cross-Validation, L1/L2 Regularization, Dropout in neural nets, pruning trees, and collecting more training data.",INFJ,Reading/Writing,0.5,"data_science_&_machine_learning,academic,question"
+53,Data Science & Machine Learning,What is overfitting and how do you prevent it in machine learning models?,"Overfitting occurs when a model learns noise and idiosyncratic details of the training data rather than general patterns, resulting in low training error but high test error. Prevention methods include Cross-Validation, L1/L2 Regularization, Dropout in neural nets, pruning trees, and collecting more training data.",ISTJ,Kinesthetic,0.6000000000000001,"data_science_&_machine_learning,academic,question"
+54,Data Science & Machine Learning,What is overfitting and how do you prevent it in machine learning models?,"Overfitting occurs when a model learns noise and idiosyncratic details of the training data rather than general patterns, resulting in low training error but high test error. Prevention methods include Cross-Validation, L1/L2 Regularization, Dropout in neural nets, pruning trees, and collecting more training data.",ENFP,Visual,0.7,"data_science_&_machine_learning,academic,question"
+55,Data Science & Machine Learning,Explain K-Means clustering algorithm.,"K-Means is an unsupervised clustering algorithm that partitions N observations into K clusters. It randomly initializes K centroids, iteratively assigns each data point to its closest centroid using Euclidean distance, and updates centroids to the mean of their assigned points until convergence.",INTJ,Visual,0.3,"data_science_&_machine_learning,academic,question"
+56,Data Science & Machine Learning,Explain K-Means clustering algorithm.,"K-Means is an unsupervised clustering algorithm that partitions N observations into K clusters. It randomly initializes K centroids, iteratively assigns each data point to its closest centroid using Euclidean distance, and updates centroids to the mean of their assigned points until convergence.",ENTP,Auditory,0.4,"data_science_&_machine_learning,academic,question"
+57,Data Science & Machine Learning,Explain K-Means clustering algorithm.,"K-Means is an unsupervised clustering algorithm that partitions N observations into K clusters. It randomly initializes K centroids, iteratively assigns each data point to its closest centroid using Euclidean distance, and updates centroids to the mean of their assigned points until convergence.",INFJ,Reading/Writing,0.5,"data_science_&_machine_learning,academic,question"
+58,Data Science & Machine Learning,Explain K-Means clustering algorithm.,"K-Means is an unsupervised clustering algorithm that partitions N observations into K clusters. It randomly initializes K centroids, iteratively assigns each data point to its closest centroid using Euclidean distance, and updates centroids to the mean of their assigned points until convergence.",ISTJ,Kinesthetic,0.6000000000000001,"data_science_&_machine_learning,academic,question"
+59,Data Science & Machine Learning,Explain K-Means clustering algorithm.,"K-Means is an unsupervised clustering algorithm that partitions N observations into K clusters. It randomly initializes K centroids, iteratively assigns each data point to its closest centroid using Euclidean distance, and updates centroids to the mean of their assigned points until convergence.",ENFP,Visual,0.7,"data_science_&_machine_learning,academic,question"
+60,Computer Architecture & Systems,What is virtual memory and how does paging work?,"Virtual memory provides an abstraction of contiguous physical RAM to processes. The Memory Management Unit (MMU) translates virtual addresses to physical frame addresses via page tables. If a process accesses a page not present in physical RAM, a Page Fault exception occurs, triggering the OS to swap it in from disk.",INTJ,Visual,0.3,"computer_architecture_&_systems,academic,question"
+61,Computer Architecture & Systems,What is virtual memory and how does paging work?,"Virtual memory provides an abstraction of contiguous physical RAM to processes. The Memory Management Unit (MMU) translates virtual addresses to physical frame addresses via page tables. If a process accesses a page not present in physical RAM, a Page Fault exception occurs, triggering the OS to swap it in from disk.",ENTP,Auditory,0.4,"computer_architecture_&_systems,academic,question"
+62,Computer Architecture & Systems,What is virtual memory and how does paging work?,"Virtual memory provides an abstraction of contiguous physical RAM to processes. The Memory Management Unit (MMU) translates virtual addresses to physical frame addresses via page tables. If a process accesses a page not present in physical RAM, a Page Fault exception occurs, triggering the OS to swap it in from disk.",INFJ,Reading/Writing,0.5,"computer_architecture_&_systems,academic,question"
+63,Computer Architecture & Systems,What is virtual memory and how does paging work?,"Virtual memory provides an abstraction of contiguous physical RAM to processes. The Memory Management Unit (MMU) translates virtual addresses to physical frame addresses via page tables. If a process accesses a page not present in physical RAM, a Page Fault exception occurs, triggering the OS to swap it in from disk.",ISTJ,Kinesthetic,0.6000000000000001,"computer_architecture_&_systems,academic,question"
+64,Computer Architecture & Systems,What is virtual memory and how does paging work?,"Virtual memory provides an abstraction of contiguous physical RAM to processes. The Memory Management Unit (MMU) translates virtual addresses to physical frame addresses via page tables. If a process accesses a page not present in physical RAM, a Page Fault exception occurs, triggering the OS to swap it in from disk.",ENFP,Visual,0.7,"computer_architecture_&_systems,academic,question"
+65,Computer Architecture & Systems,Explain race conditions and how mutexes resolve them.,A race condition occurs when concurrent threads access and manipulate shared mutable data simultaneously and the outcome depends on thread scheduling order. A Mutex (Mutual Exclusion) enforces that only one thread can hold the lock and enter the critical section at any instant.,INTJ,Visual,0.3,"computer_architecture_&_systems,academic,question"
+66,Computer Architecture & Systems,Explain race conditions and how mutexes resolve them.,A race condition occurs when concurrent threads access and manipulate shared mutable data simultaneously and the outcome depends on thread scheduling order. A Mutex (Mutual Exclusion) enforces that only one thread can hold the lock and enter the critical section at any instant.,ENTP,Auditory,0.4,"computer_architecture_&_systems,academic,question"
+67,Computer Architecture & Systems,Explain race conditions and how mutexes resolve them.,A race condition occurs when concurrent threads access and manipulate shared mutable data simultaneously and the outcome depends on thread scheduling order. A Mutex (Mutual Exclusion) enforces that only one thread can hold the lock and enter the critical section at any instant.,INFJ,Reading/Writing,0.5,"computer_architecture_&_systems,academic,question"
+68,Computer Architecture & Systems,Explain race conditions and how mutexes resolve them.,A race condition occurs when concurrent threads access and manipulate shared mutable data simultaneously and the outcome depends on thread scheduling order. A Mutex (Mutual Exclusion) enforces that only one thread can hold the lock and enter the critical section at any instant.,ISTJ,Kinesthetic,0.6000000000000001,"computer_architecture_&_systems,academic,question"
+69,Computer Architecture & Systems,Explain race conditions and how mutexes resolve them.,A race condition occurs when concurrent threads access and manipulate shared mutable data simultaneously and the outcome depends on thread scheduling order. A Mutex (Mutual Exclusion) enforces that only one thread can hold the lock and enter the critical section at any instant.,ENFP,Visual,0.7,"computer_architecture_&_systems,academic,question"
+70,Computer Architecture & Systems,What is cache coherence in multi-core processors?,"Cache coherence ensures that multiple processor cores with private caches have a consistent view of shared physical memory. Protocols like MESI (Modified, Exclusive, Shared, Invalid) broadcast bus snooping signals to invalidate or update stale cache lines across cores.",INTJ,Visual,0.3,"computer_architecture_&_systems,academic,question"
+71,Computer Architecture & Systems,What is cache coherence in multi-core processors?,"Cache coherence ensures that multiple processor cores with private caches have a consistent view of shared physical memory. Protocols like MESI (Modified, Exclusive, Shared, Invalid) broadcast bus snooping signals to invalidate or update stale cache lines across cores.",ENTP,Auditory,0.4,"computer_architecture_&_systems,academic,question"
+72,Computer Architecture & Systems,What is cache coherence in multi-core processors?,"Cache coherence ensures that multiple processor cores with private caches have a consistent view of shared physical memory. Protocols like MESI (Modified, Exclusive, Shared, Invalid) broadcast bus snooping signals to invalidate or update stale cache lines across cores.",INFJ,Reading/Writing,0.5,"computer_architecture_&_systems,academic,question"
+73,Computer Architecture & Systems,What is cache coherence in multi-core processors?,"Cache coherence ensures that multiple processor cores with private caches have a consistent view of shared physical memory. Protocols like MESI (Modified, Exclusive, Shared, Invalid) broadcast bus snooping signals to invalidate or update stale cache lines across cores.",ISTJ,Kinesthetic,0.6000000000000001,"computer_architecture_&_systems,academic,question"
+74,Computer Architecture & Systems,What is cache coherence in multi-core processors?,"Cache coherence ensures that multiple processor cores with private caches have a consistent view of shared physical memory. Protocols like MESI (Modified, Exclusive, Shared, Invalid) broadcast bus snooping signals to invalidate or update stale cache lines across cores.",ENFP,Visual,0.7,"computer_architecture_&_systems,academic,question"
+75,University & SIS Regulations,How is Grade Point Average (GPA) calculated in the university credit system?,"Semester GPA is calculated by multiplying each course's earned Grade Points (A=4.0, B=3.0, C=2.0, D=1.0, F=0) by its Credit Hours, summing the total quality points, and dividing by total credit hours attempted in that semester.",INTJ,Visual,0.3,"university_&_sis_regulations,academic,question"
+76,University & SIS Regulations,How is Grade Point Average (GPA) calculated in the university credit system?,"Semester GPA is calculated by multiplying each course's earned Grade Points (A=4.0, B=3.0, C=2.0, D=1.0, F=0) by its Credit Hours, summing the total quality points, and dividing by total credit hours attempted in that semester.",ENTP,Auditory,0.4,"university_&_sis_regulations,academic,question"
+77,University & SIS Regulations,How is Grade Point Average (GPA) calculated in the university credit system?,"Semester GPA is calculated by multiplying each course's earned Grade Points (A=4.0, B=3.0, C=2.0, D=1.0, F=0) by its Credit Hours, summing the total quality points, and dividing by total credit hours attempted in that semester.",INFJ,Reading/Writing,0.5,"university_&_sis_regulations,academic,question"
+78,University & SIS Regulations,How is Grade Point Average (GPA) calculated in the university credit system?,"Semester GPA is calculated by multiplying each course's earned Grade Points (A=4.0, B=3.0, C=2.0, D=1.0, F=0) by its Credit Hours, summing the total quality points, and dividing by total credit hours attempted in that semester.",ISTJ,Kinesthetic,0.6000000000000001,"university_&_sis_regulations,academic,question"
+79,University & SIS Regulations,How is Grade Point Average (GPA) calculated in the university credit system?,"Semester GPA is calculated by multiplying each course's earned Grade Points (A=4.0, B=3.0, C=2.0, D=1.0, F=0) by its Credit Hours, summing the total quality points, and dividing by total credit hours attempted in that semester.",ENFP,Visual,0.7,"university_&_sis_regulations,academic,question"
+80,University & SIS Regulations,What is the policy for repeating a failed course?,"A student who receives an 'F' or 'D' in any required course may repeat the course up to two times. Upon completion of the repeated course, the higher grade is calculated into the cumulative GPA, while the previous attempt remains noted on the transcript.",INTJ,Visual,0.3,"university_&_sis_regulations,academic,question"
+81,University & SIS Regulations,What is the policy for repeating a failed course?,"A student who receives an 'F' or 'D' in any required course may repeat the course up to two times. Upon completion of the repeated course, the higher grade is calculated into the cumulative GPA, while the previous attempt remains noted on the transcript.",ENTP,Auditory,0.4,"university_&_sis_regulations,academic,question"
+82,University & SIS Regulations,What is the policy for repeating a failed course?,"A student who receives an 'F' or 'D' in any required course may repeat the course up to two times. Upon completion of the repeated course, the higher grade is calculated into the cumulative GPA, while the previous attempt remains noted on the transcript.",INFJ,Reading/Writing,0.5,"university_&_sis_regulations,academic,question"
+83,University & SIS Regulations,What is the policy for repeating a failed course?,"A student who receives an 'F' or 'D' in any required course may repeat the course up to two times. Upon completion of the repeated course, the higher grade is calculated into the cumulative GPA, while the previous attempt remains noted on the transcript.",ISTJ,Kinesthetic,0.6000000000000001,"university_&_sis_regulations,academic,question"
+84,University & SIS Regulations,What is the policy for repeating a failed course?,"A student who receives an 'F' or 'D' in any required course may repeat the course up to two times. Upon completion of the repeated course, the higher grade is calculated into the cumulative GPA, while the previous attempt remains noted on the transcript.",ENFP,Visual,0.7,"university_&_sis_regulations,academic,question"
+85,University & SIS Regulations,What are the requirements to make the Dean's Honor Roll?,Undergraduate students who complete at least 15 graded credit hours in a regular semester with a semester GPA of 3.65 or higher and no incomplete or disciplinary sanctions qualify for the Dean's Honor Roll.,INTJ,Visual,0.3,"university_&_sis_regulations,academic,question"
+86,University & SIS Regulations,What are the requirements to make the Dean's Honor Roll?,Undergraduate students who complete at least 15 graded credit hours in a regular semester with a semester GPA of 3.65 or higher and no incomplete or disciplinary sanctions qualify for the Dean's Honor Roll.,ENTP,Auditory,0.4,"university_&_sis_regulations,academic,question"
+87,University & SIS Regulations,What are the requirements to make the Dean's Honor Roll?,Undergraduate students who complete at least 15 graded credit hours in a regular semester with a semester GPA of 3.65 or higher and no incomplete or disciplinary sanctions qualify for the Dean's Honor Roll.,INFJ,Reading/Writing,0.5,"university_&_sis_regulations,academic,question"
+88,University & SIS Regulations,What are the requirements to make the Dean's Honor Roll?,Undergraduate students who complete at least 15 graded credit hours in a regular semester with a semester GPA of 3.65 or higher and no incomplete or disciplinary sanctions qualify for the Dean's Honor Roll.,ISTJ,Kinesthetic,0.6000000000000001,"university_&_sis_regulations,academic,question"
+89,University & SIS Regulations,What are the requirements to make the Dean's Honor Roll?,Undergraduate students who complete at least 15 graded credit hours in a regular semester with a semester GPA of 3.65 or higher and no incomplete or disciplinary sanctions qualify for the Dean's Honor Roll.,ENFP,Visual,0.7,"university_&_sis_regulations,academic,question"
+232,AI Synthesized,Which courses should I register this semester,"🛠️ [Hands-on Practice] Here is the practical application and concrete workflow:
+
+**SIS Course Recommendation & Schedule Planning Strategy:**
+1. **Prerequisite Verification:** Verify that all required prerequisite courses have a passing grade (≥ 60% / C or better) on your transcript.
+2. **Core vs Elective Ratio:** A standard balanced semester consists of 3 major core courses (9–10 credits) plus 1 general/interdisciplinary elective (3 credits).
+3. **Credit Balancing:** Maintain 15–16 credit hours per semester to stay on track for graduation within 4 years (120–128 total credits).
+4. **Advisor Consultation:** Consult the 'Course Recommender' tab on your mobile dashboard to view your personalized AI match scores and prerequisite status.",ENTJ,Kinesthetic,0.4,"ai_learned,auto"
+233,AI Synthesized,what does the database rows and columns represent,"📑 [Structured Reference] Summary definition, key principles, and formal specifications:
+
+**Comprehensive Analysis of: ""what does the database rows and columns represent""**
+
+**1. Core Concept & Theoretical Definition:**
+In university academic curriculum, this concept represents an essential building block. It connects foundational theoretical models with practical problem-solving methodologies in your department.
+
+**2. Key Structural Principles:**
+• **Systematic Decomposition:** Break complex problems into atomic, testable modules.
+• **Invariant Verification:** Ensure all boundary conditions and edge cases are validated.
+• **Resource Optimization:** Maintain balance between compute latency, memory footprint, and development clarity.
+
+**3. Practical Guidance Tailored to Your Profile (INFP | Reading/Writing):**
+Since you learn best with a **Reading/Writing** perspective, review the syllabus documentation in the Course Catalog and experiment directly with small test implementations or visual concept maps.",INFP,Reading/Writing,0.4,"ai_learned,auto"
+234,Course Syllabus,What is the syllabus and overview for 00103N - Introduction to Computer Systems?,"**Course:** 00103N: Introduction to Computer Systems
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Computer Systems (00103N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00103N,syllabus,10"
+235,Course Prerequisites,What are the prerequisites for 00103N (Introduction to Computer Systems)?,**00103N - Introduction to Computer Systems** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00103N,prerequisites,none"
+236,Course Syllabus,What is the syllabus and overview for 00109N - Introduction to Artificial Intelligence?,"**Course:** 00109N: Introduction to Artificial Intelligence
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Artificial Intelligence (00109N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00109N,syllabus,10"
+237,Course Prerequisites,What are the prerequisites for 00109N (Introduction to Artificial Intelligence)?,The prerequisite for **00109N - Introduction to Artificial Intelligence** is **00107N**. You must achieve a passing grade (≥ 60% / C) in 00107N prior to registering.,General,Visual,0.2,"00109N,prerequisites,00107N"
+238,Course Syllabus,What is the syllabus and overview for 00110N - Programming II?,"**Course:** 00110N: Programming II
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Programming II (00110N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00110N,syllabus,10"
+239,Course Prerequisites,What are the prerequisites for 00110N (Programming II)?,The prerequisite for **00110N - Programming II** is **00105N**. You must achieve a passing grade (≥ 60% / C) in 00105N prior to registering.,General,Visual,0.2,"00110N,prerequisites,00105N"
+240,Course Syllabus,What is the syllabus and overview for 00104N - Introduction to Data Sciences?,"**Course:** 00104N: Introduction to Data Sciences
+**Department:** 8
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Data Sciences (00104N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00104N,syllabus,8"
+241,Course Prerequisites,What are the prerequisites for 00104N (Introduction to Data Sciences)?,**00104N - Introduction to Data Sciences** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00104N,prerequisites,none"
+242,Course Syllabus,What is the syllabus and overview for 0X006N - Man and Environment?,"**Course:** 0X006N: Man and Environment
+**Department:** 8
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Man and Environment (0X006N) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X006N,syllabus,8"
+243,Course Prerequisites,What are the prerequisites for 0X006N (Man and Environment)?,**0X006N - Man and Environment** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X006N,prerequisites,none"
+244,Course Syllabus,What is the syllabus and overview for 0X005N - Self-management?,"**Course:** 0X005N: Self-management
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Self-management (0X005N) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X005N,syllabus,10"
+245,Course Prerequisites,What are the prerequisites for 0X005N (Self-management)?,**0X005N - Self-management** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X005N,prerequisites,none"
+246,Course Syllabus,What is the syllabus and overview for 00106N - Probability and Statistics I?,"**Course:** 00106N: Probability and Statistics I
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Probability and Statistics I (00106N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00106N,syllabus,10"
+247,Course Prerequisites,What are the prerequisites for 00106N (Probability and Statistics I)?,**00106N - Probability and Statistics I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00106N,prerequisites,none"
+248,Course Syllabus,What is the syllabus and overview for 00107N - Discrete Structures?,"**Course:** 00107N: Discrete Structures
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Discrete Structures (00107N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00107N,syllabus,10"
+249,Course Prerequisites,What are the prerequisites for 00107N (Discrete Structures)?,**00107N - Discrete Structures** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00107N,prerequisites,none"
+250,Course Syllabus,What is the syllabus and overview for 0X009N - Technical writing?,"**Course:** 0X009N: Technical writing
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Technical writing (0X009N) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X009N,syllabus,10"
+251,Course Prerequisites,What are the prerequisites for 0X009N (Technical writing)?,**0X009N - Technical writing** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X009N,prerequisites,none"
+252,Course Syllabus,What is the syllabus and overview for 00108N - Data Structures and Algorithms?,"**Course:** 00108N: Data Structures and Algorithms
+**Department:** 8
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Structures and Algorithms (00108N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00108N,syllabus,8"
+253,Course Prerequisites,What are the prerequisites for 00108N (Data Structures and Algorithms)?,The prerequisite for **00108N - Data Structures and Algorithms** is **00105N**. You must achieve a passing grade (≥ 60% / C) in 00105N prior to registering.,General,Visual,0.2,"00108N,prerequisites,00105N"
+254,Course Syllabus,What is the syllabus and overview for 00101N - Linear Algebra?,"**Course:** 00101N: Linear Algebra
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Linear Algebra (00101N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00101N,syllabus,10"
+255,Course Prerequisites,What are the prerequisites for 00101N (Linear Algebra)?,**00101N - Linear Algebra** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00101N,prerequisites,none"
+256,Course Syllabus,What is the syllabus and overview for 0X020N - Communication skills?,"**Course:** 0X020N: Communication skills
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Communication skills (0X020N) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X020N,syllabus,10"
+257,Course Prerequisites,What are the prerequisites for 0X020N (Communication skills)?,**0X020N - Communication skills** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X020N,prerequisites,none"
+258,Course Syllabus,What is the syllabus and overview for 00102N - Calculus?,"**Course:** 00102N: Calculus
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Calculus (00102N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00102N,syllabus,10"
+259,Course Prerequisites,What are the prerequisites for 00102N (Calculus)?,**00102N - Calculus** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00102N,prerequisites,none"
+260,Course Syllabus,What is the syllabus and overview for 00105N - Programming I?,"**Course:** 00105N: Programming I
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Programming I (00105N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00105N,syllabus,10"
+261,Course Prerequisites,What are the prerequisites for 00105N (Programming I)?,**00105N - Programming I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"00105N,prerequisites,none"
+262,Course Syllabus,What is the syllabus and overview for 0X011N - English for CS?,"**Course:** 0X011N: English for CS
+**Department:** 10
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** English for CS (0X011N) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X011N,syllabus,10"
+263,Course Prerequisites,What are the prerequisites for 0X011N (English for CS)?,**0X011N - English for CS** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X011N,prerequisites,none"
+264,Course Syllabus,What is the syllabus and overview for 4170103N - Introduction to Computing Technology?,"**Course:** 4170103N: Introduction to Computing Technology
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Computing Technology (4170103N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170103N,syllabus,11"
+265,Course Prerequisites,What are the prerequisites for 4170103N (Introduction to Computing Technology)?,**4170103N - Introduction to Computing Technology** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170103N,prerequisites,none"
+266,Course Syllabus,What is the syllabus and overview for 4170105N - Physics (1)?,"**Course:** 4170105N: Physics (1)
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Physics (1) (4170105N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170105N,syllabus,11"
+267,Course Prerequisites,What are the prerequisites for 4170105N (Physics (1))?,**4170105N - Physics (1)** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170105N,prerequisites,none"
+268,Course Syllabus,What is the syllabus and overview for 4170102N - Math (II)?,"**Course:** 4170102N: Math (II)
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Math (II) (4170102N) is an official Core course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170102N,syllabus,11"
+269,Course Prerequisites,What are the prerequisites for 4170102N (Math (II))?,The prerequisite for **4170102N - Math (II)** is **4170101N**. You must achieve a passing grade (≥ 60% / C) in 4170101N prior to registering.,General,Visual,0.2,"4170102N,prerequisites,4170101N"
+270,Course Syllabus,What is the syllabus and overview for 4170101N - Math (I)?,"**Course:** 4170101N: Math (I)
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Math (I) (4170101N) is an official Core course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170101N,syllabus,11"
+271,Course Prerequisites,What are the prerequisites for 4170101N (Math (I))?,**4170101N - Math (I)** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170101N,prerequisites,none"
+272,Course Syllabus,What is the syllabus and overview for HUM-3-SIMN - English Language?,"**Course:** HUM-3-SIMN: English Language
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** English Language (HUM-3-SIMN) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"HUM-3-SIMN,syllabus,11"
+273,Course Prerequisites,What are the prerequisites for HUM-3-SIMN (English Language)?,**HUM-3-SIMN - English Language** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"HUM-3-SIMN,prerequisites,none"
+274,Course Syllabus,What is the syllabus and overview for HUM-2-SIMN - Public Health?,"**Course:** HUM-2-SIMN: Public Health
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Public Health (HUM-2-SIMN) is an official Elective course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"HUM-2-SIMN,syllabus,11"
+275,Course Prerequisites,What are the prerequisites for HUM-2-SIMN (Public Health)?,**HUM-2-SIMN - Public Health** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"HUM-2-SIMN,prerequisites,none"
+276,Course Syllabus,What is the syllabus and overview for 4170107N - Introduction to probability?,"**Course:** 4170107N: Introduction to probability
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Introduction to probability (4170107N) is an official Core course (2 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170107N,syllabus,11"
+277,Course Prerequisites,What are the prerequisites for 4170107N (Introduction to probability)?,**4170107N - Introduction to probability** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170107N,prerequisites,none"
+278,Course Syllabus,What is the syllabus and overview for 4170106N - Physics (II)?,"**Course:** 4170106N: Physics (II)
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Physics (II) (4170106N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170106N,syllabus,11"
+279,Course Prerequisites,What are the prerequisites for 4170106N (Physics (II))?,The prerequisite for **4170106N - Physics (II)** is **4170105N**. You must achieve a passing grade (≥ 60% / C) in 4170105N prior to registering.,General,Visual,0.2,"4170106N,prerequisites,4170105N"
+280,Course Syllabus,What is the syllabus and overview for 4170108N - Computer Programming?,"**Course:** 4170108N: Computer Programming
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computer Programming (4170108N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170108N,syllabus,11"
+281,Course Prerequisites,What are the prerequisites for 4170108N (Computer Programming)?,**4170108N - Computer Programming** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170108N,prerequisites,none"
+282,Course Syllabus,What is the syllabus and overview for 4170104N - Mathematics for Computer Science?,"**Course:** 4170104N: Mathematics for Computer Science
+**Department:** 11
+**Study Year:** Year 1 (Level 1)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Mathematics for Computer Science (4170104N) is an official Core course (3 credit hours) offered in Year 1 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170104N,syllabus,11"
+283,Course Prerequisites,What are the prerequisites for 4170104N (Mathematics for Computer Science)?,The prerequisite for **4170104N - Mathematics for Computer Science** is **4170103N**. You must achieve a passing grade (≥ 60% / C) in 4170103N prior to registering.,General,Visual,0.2,"4170104N,prerequisites,4170103N"
+284,Course Syllabus,What is the syllabus and overview for 03204N - Regression Analysis?,"**Course:** 03204N: Regression Analysis
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Regression Analysis (03204N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03204N,syllabus,10"
+285,Course Prerequisites,What are the prerequisites for 03204N (Regression Analysis)?,The prerequisite for **03204N - Regression Analysis** is **00201N**. You must achieve a passing grade (≥ 60% / C) in 00201N prior to registering.,General,Visual,0.2,"03204N,prerequisites,00201N"
+286,Course Syllabus,What is the syllabus and overview for 01202N - Optimization Methods?,"**Course:** 01202N: Optimization Methods
+**Department:** 9
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Optimization Methods (01202N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01202N,syllabus,9"
+287,Course Prerequisites,What are the prerequisites for 01202N (Optimization Methods)?,"The prerequisite for **01202N - Optimization Methods** is **00101N, 00102N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00102N prior to registering.",General,Visual,0.2,"01202N,prerequisites,00101N, 00102N"
+288,Course Syllabus,What is the syllabus and overview for 00203N - Numerical Computations?,"**Course:** 00203N: Numerical Computations
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Numerical Computations (00203N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00203N,syllabus,10"
+289,Course Prerequisites,What are the prerequisites for 00203N (Numerical Computations)?,The prerequisite for **00203N - Numerical Computations** is **00101N**. You must achieve a passing grade (≥ 60% / C) in 00101N prior to registering.,General,Visual,0.2,"00203N,prerequisites,00101N"
+290,Course Syllabus,What is the syllabus and overview for 00202N - Introduction to Databases?,"**Course:** 00202N: Introduction to Databases
+**Department:** 9
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Databases (00202N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00202N,syllabus,9"
+291,Course Prerequisites,What are the prerequisites for 00202N (Introduction to Databases)?,The prerequisite for **00202N - Introduction to Databases** is **00105N**. You must achieve a passing grade (≥ 60% / C) in 00105N prior to registering.,General,Visual,0.2,"00202N,prerequisites,00105N"
+292,Course Syllabus,What is the syllabus and overview for 00205N - Mobile Programming?,"**Course:** 00205N: Mobile Programming
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Mobile Programming (00205N) is an official Elective course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00205N,syllabus,10"
+293,Course Prerequisites,What are the prerequisites for 00205N (Mobile Programming)?,The prerequisite for **00205N - Mobile Programming** is **00105N**. You must achieve a passing grade (≥ 60% / C) in 00105N prior to registering.,General,Visual,0.2,"00205N,prerequisites,00105N"
+294,Course Syllabus,What is the syllabus and overview for 00204N - Web Programming?,"**Course:** 00204N: Web Programming
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Web Programming (00204N) is an official Elective course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00204N,syllabus,10"
+295,Course Prerequisites,What are the prerequisites for 00204N (Web Programming)?,The prerequisite for **00204N - Web Programming** is **00105N**. You must achieve a passing grade (≥ 60% / C) in 00105N prior to registering.,General,Visual,0.2,"00204N,prerequisites,00105N"
+296,Course Syllabus,What is the syllabus and overview for 01204N - Neural Networks?,"**Course:** 01204N: Neural Networks
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Neural Networks (01204N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01204N,syllabus,10"
+297,Course Prerequisites,What are the prerequisites for 01204N (Neural Networks)?,The prerequisite for **01204N - Neural Networks** is **00109N**. You must achieve a passing grade (≥ 60% / C) in 00109N prior to registering.,General,Visual,0.2,"01204N,prerequisites,00109N"
+298,Course Syllabus,What is the syllabus and overview for 03203N - Data Science Tools and Software?,"**Course:** 03203N: Data Science Tools and Software
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Science Tools and Software (03203N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03203N,syllabus,10"
+299,Course Prerequisites,What are the prerequisites for 03203N (Data Science Tools and Software)?,"The prerequisite for **03203N - Data Science Tools and Software** is **00104N, 00201N**. You must achieve a passing grade (≥ 60% / C) in 00104N, 00201N prior to registering.",General,Visual,0.2,"03203N,prerequisites,00104N, 00201N"
+300,Course Syllabus,What is the syllabus and overview for 03202N - Data Science Methodology?,"**Course:** 03202N: Data Science Methodology
+**Department:** 10
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Science Methodology (03202N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03202N,syllabus,10"
+301,Course Prerequisites,What are the prerequisites for 03202N (Data Science Methodology)?,The prerequisite for **03202N - Data Science Methodology** is **00104N**. You must achieve a passing grade (≥ 60% / C) in 00104N prior to registering.,General,Visual,0.2,"03202N,prerequisites,00104N"
+302,Course Syllabus,What is the syllabus and overview for 00201N - Probability and Statistics II?,"**Course:** 00201N: Probability and Statistics II
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Probability and Statistics II (00201N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00201N,syllabus,8"
+303,Course Prerequisites,What are the prerequisites for 00201N (Probability and Statistics II)?,The prerequisite for **00201N - Probability and Statistics II** is **00106N**. You must achieve a passing grade (≥ 60% / C) in 00106N prior to registering.,General,Visual,0.2,"00201N,prerequisites,00106N"
+304,Course Syllabus,What is the syllabus and overview for 00207N - Computer Networks?,"**Course:** 00207N: Computer Networks
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computer Networks (00207N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00207N,syllabus,8"
+305,Course Prerequisites,What are the prerequisites for 00207N (Computer Networks)?,"The prerequisite for **00207N - Computer Networks** is **00103N, 00105N**. You must achieve a passing grade (≥ 60% / C) in 00103N, 00105N prior to registering.",General,Visual,0.2,"00207N,prerequisites,00103N, 00105N"
+306,Course Syllabus,What is the syllabus and overview for 0X007N - Critical Thinking?,"**Course:** 0X007N: Critical Thinking
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Critical Thinking (0X007N) is an official Core course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X007N,syllabus,8"
+307,Course Prerequisites,What are the prerequisites for 0X007N (Critical Thinking)?,**0X007N - Critical Thinking** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X007N,prerequisites,none"
+308,Course Syllabus,What is the syllabus and overview for 01201N - Smart Systems and Computational Intelligence?,"**Course:** 01201N: Smart Systems and Computational Intelligence
+**Department:** 9
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Smart Systems and Computational Intelligence (01201N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01201N,syllabus,9"
+309,Course Prerequisites,What are the prerequisites for 01201N (Smart Systems and Computational Intelligence)?,The prerequisite for **01201N - Smart Systems and Computational Intelligence** is **00109N**. You must achieve a passing grade (≥ 60% / C) in 00109N prior to registering.,General,Visual,0.2,"01201N,prerequisites,00109N"
+310,Course Syllabus,What is the syllabus and overview for 00206N - Data Mining and Analytics?,"**Course:** 00206N: Data Mining and Analytics
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Mining and Analytics (00206N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00206N,syllabus,8"
+311,Course Prerequisites,What are the prerequisites for 00206N (Data Mining and Analytics)?,The prerequisite for **00206N - Data Mining and Analytics** is **00201N**. You must achieve a passing grade (≥ 60% / C) in 00201N prior to registering.,General,Visual,0.2,"00206N,prerequisites,00201N"
+312,Course Syllabus,What is the syllabus and overview for 01206N - AI Security Issues?,"**Course:** 01206N: AI Security Issues
+**Department:** 9
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** AI Security Issues (01206N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01206N,syllabus,9"
+313,Course Prerequisites,What are the prerequisites for 01206N (AI Security Issues)?,The prerequisite for **01206N - AI Security Issues** is **00109N**. You must achieve a passing grade (≥ 60% / C) in 00109N prior to registering.,General,Visual,0.2,"01206N,prerequisites,00109N"
+314,Course Syllabus,What is the syllabus and overview for 02203N - Cryptography?,"**Course:** 02203N: Cryptography
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Cryptography (02203N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02203N,syllabus,8"
+315,Course Prerequisites,What are the prerequisites for 02203N (Cryptography)?,"The prerequisite for **02203N - Cryptography** is **02201N, 02202N**. You must achieve a passing grade (≥ 60% / C) in 02201N, 02202N prior to registering.",General,Visual,0.2,"02203N,prerequisites,02201N, 02202N"
+316,Course Syllabus,What is the syllabus and overview for 02202N - Number Theory?,"**Course:** 02202N: Number Theory
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Number Theory (02202N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02202N,syllabus,8"
+317,Course Prerequisites,What are the prerequisites for 02202N (Number Theory)?,"The prerequisite for **02202N - Number Theory** is **00101N, 00106N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00106N prior to registering.",General,Visual,0.2,"02202N,prerequisites,00101N, 00106N"
+318,Course Syllabus,What is the syllabus and overview for 02201N - Introduction to Cybersecurity?,"**Course:** 02201N: Introduction to Cybersecurity
+**Department:** 8
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Cybersecurity (02201N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02201N,syllabus,8"
+319,Course Prerequisites,What are the prerequisites for 02201N (Introduction to Cybersecurity)?,**02201N - Introduction to Cybersecurity** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"02201N,prerequisites,none"
+320,Course Syllabus,What is the syllabus and overview for 4170202N - Math (IV)?,"**Course:** 4170202N: Math (IV)
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Math (IV) (4170202N) is an official Core course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170202N,syllabus,11"
+321,Course Prerequisites,What are the prerequisites for 4170202N (Math (IV))?,The prerequisite for **4170202N - Math (IV)** is **4170201N**. You must achieve a passing grade (≥ 60% / C) in 4170201N prior to registering.,General,Visual,0.2,"4170202N,prerequisites,4170201N"
+322,Course Syllabus,What is the syllabus and overview for 4170201N - Math (III)?,"**Course:** 4170201N: Math (III)
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Math (III) (4170201N) is an official Core course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170201N,syllabus,11"
+323,Course Prerequisites,What are the prerequisites for 4170201N (Math (III))?,The prerequisite for **4170201N - Math (III)** is **4170102N**. You must achieve a passing grade (≥ 60% / C) in 4170102N prior to registering.,General,Visual,0.2,"4170201N,prerequisites,4170102N"
+324,Course Syllabus,What is the syllabus and overview for 4170204N - Computational Tools for Data Science?,"**Course:** 4170204N: Computational Tools for Data Science
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computational Tools for Data Science (4170204N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170204N,syllabus,11"
+325,Course Prerequisites,What are the prerequisites for 4170204N (Computational Tools for Data Science)?,The prerequisite for **4170204N - Computational Tools for Data Science** is **4170108N**. You must achieve a passing grade (≥ 60% / C) in 4170108N prior to registering.,General,Visual,0.2,"4170204N,prerequisites,4170108N"
+326,Course Syllabus,What is the syllabus and overview for 4170203N - Object Oriented Programming?,"**Course:** 4170203N: Object Oriented Programming
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Object Oriented Programming (4170203N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170203N,syllabus,11"
+327,Course Prerequisites,What are the prerequisites for 4170203N (Object Oriented Programming)?,The prerequisite for **4170203N - Object Oriented Programming** is **4170108N**. You must achieve a passing grade (≥ 60% / C) in 4170108N prior to registering.,General,Visual,0.2,"4170203N,prerequisites,4170108N"
+328,Course Syllabus,What is the syllabus and overview for 4170213N - Computer Animation Techniques?,"**Course:** 4170213N: Computer Animation Techniques
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Computer Animation Techniques (4170213N) is an official Elective course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170213N,syllabus,11"
+329,Course Prerequisites,What are the prerequisites for 4170213N (Computer Animation Techniques)?,The prerequisite for **4170213N - Computer Animation Techniques** is **4170205N**. You must achieve a passing grade (≥ 60% / C) in 4170205N prior to registering.,General,Visual,0.2,"4170213N,prerequisites,4170205N"
+330,Course Syllabus,What is the syllabus and overview for 4170212N - Scientific & Technical Reporting?,"**Course:** 4170212N: Scientific & Technical Reporting
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Scientific & Technical Reporting (4170212N) is an official Elective course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170212N,syllabus,11"
+331,Course Prerequisites,What are the prerequisites for 4170212N (Scientific & Technical Reporting)?,**4170212N - Scientific & Technical Reporting** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170212N,prerequisites,none"
+332,Course Syllabus,What is the syllabus and overview for 4170207N - Software Engineering Theory?,"**Course:** 4170207N: Software Engineering Theory
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Software Engineering Theory (4170207N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170207N,syllabus,11"
+333,Course Prerequisites,What are the prerequisites for 4170207N (Software Engineering Theory)?,**4170207N - Software Engineering Theory** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170207N,prerequisites,none"
+334,Course Syllabus,What is the syllabus and overview for 4170208N - Multimedia Systems?,"**Course:** 4170208N: Multimedia Systems
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Multimedia Systems (4170208N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170208N,syllabus,11"
+335,Course Prerequisites,What are the prerequisites for 4170208N (Multimedia Systems)?,The prerequisite for **4170208N - Multimedia Systems** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170208N,prerequisites,4170203N"
+336,Course Syllabus,What is the syllabus and overview for 4170214N - Sound Engineering?,"**Course:** 4170214N: Sound Engineering
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Sound Engineering (4170214N) is an official Elective course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170214N,syllabus,11"
+337,Course Prerequisites,What are the prerequisites for 4170214N (Sound Engineering)?,**4170214N - Sound Engineering** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170214N,prerequisites,none"
+338,Course Syllabus,What is the syllabus and overview for HUM-4-SIMN - Arabic Language?,"**Course:** HUM-4-SIMN: Arabic Language
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Arabic Language (HUM-4-SIMN) is an official Elective course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"HUM-4-SIMN,syllabus,11"
+339,Course Prerequisites,What are the prerequisites for HUM-4-SIMN (Arabic Language)?,**HUM-4-SIMN - Arabic Language** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"HUM-4-SIMN,prerequisites,none"
+340,Course Syllabus,What is the syllabus and overview for 4170210N - Software Analysis and Verification?,"**Course:** 4170210N: Software Analysis and Verification
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Software Analysis and Verification (4170210N) is an official Elective course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170210N,syllabus,11"
+341,Course Prerequisites,What are the prerequisites for 4170210N (Software Analysis and Verification)?,The prerequisite for **4170210N - Software Analysis and Verification** is **4170207N**. You must achieve a passing grade (≥ 60% / C) in 4170207N prior to registering.,General,Visual,0.2,"4170210N,prerequisites,4170207N"
+342,Course Syllabus,What is the syllabus and overview for 4170205N - Game Programming?,"**Course:** 4170205N: Game Programming
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Game Programming (4170205N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170205N,syllabus,11"
+343,Course Prerequisites,What are the prerequisites for 4170205N (Game Programming)?,The prerequisite for **4170205N - Game Programming** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170205N,prerequisites,4170203N"
+344,Course Syllabus,What is the syllabus and overview for 4170206N - Data Structure?,"**Course:** 4170206N: Data Structure
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Structure (4170206N) is an official Core course (3 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170206N,syllabus,11"
+345,Course Prerequisites,What are the prerequisites for 4170206N (Data Structure)?,The prerequisite for **4170206N - Data Structure** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170206N,prerequisites,4170203N"
+346,Course Syllabus,What is the syllabus and overview for HUM-6-SIMN - Self Management?,"**Course:** HUM-6-SIMN: Self Management
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Self Management (HUM-6-SIMN) is an official Elective course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"HUM-6-SIMN,syllabus,11"
+347,Course Prerequisites,What are the prerequisites for HUM-6-SIMN (Self Management)?,**HUM-6-SIMN - Self Management** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"HUM-6-SIMN,prerequisites,none"
+348,Course Syllabus,What is the syllabus and overview for HUM-5-SIMN - History of Science?,"**Course:** HUM-5-SIMN: History of Science
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** History of Science (HUM-5-SIMN) is an official Elective course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"HUM-5-SIMN,syllabus,11"
+349,Course Prerequisites,What are the prerequisites for HUM-5-SIMN (History of Science)?,**HUM-5-SIMN - History of Science** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"HUM-5-SIMN,prerequisites,none"
+350,Course Syllabus,What is the syllabus and overview for 4170211N - Theory of Computation?,"**Course:** 4170211N: Theory of Computation
+**Department:** 11
+**Study Year:** Year 2 (Level 2)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Theory of Computation (4170211N) is an official Elective course (2 credit hours) offered in Year 2 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170211N,syllabus,11"
+351,Course Prerequisites,What are the prerequisites for 4170211N (Theory of Computation)?,The prerequisite for **4170211N - Theory of Computation** is **4170104N**. You must achieve a passing grade (≥ 60% / C) in 4170104N prior to registering.,General,Visual,0.2,"4170211N,prerequisites,4170104N"
+352,Course Syllabus,What is the syllabus and overview for 01306N - Pattern Recognition?,"**Course:** 01306N: Pattern Recognition
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Pattern Recognition (01306N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01306N,syllabus,10"
+353,Course Prerequisites,What are the prerequisites for 01306N (Pattern Recognition)?,"The prerequisite for **01306N - Pattern Recognition** is **00101N, 00106N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00106N prior to registering.",General,Visual,0.2,"01306N,prerequisites,00101N, 00106N"
+354,Course Syllabus,What is the syllabus and overview for 03304N - Data Computation and Analysis?,"**Course:** 03304N: Data Computation and Analysis
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Computation and Analysis (03304N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03304N,syllabus,10"
+355,Course Prerequisites,What are the prerequisites for 03304N (Data Computation and Analysis)?,"The prerequisite for **03304N - Data Computation and Analysis** is **00206N, 00305N**. You must achieve a passing grade (≥ 60% / C) in 00206N, 00305N prior to registering.",General,Visual,0.2,"03304N,prerequisites,00206N, 00305N"
+356,Course Syllabus,What is the syllabus and overview for 03303N - Data Visualization Tools?,"**Course:** 03303N: Data Visualization Tools
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Visualization Tools (03303N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03303N,syllabus,10"
+357,Course Prerequisites,What are the prerequisites for 03303N (Data Visualization Tools)?,The prerequisite for **03303N - Data Visualization Tools** is **03203N**. You must achieve a passing grade (≥ 60% / C) in 03203N prior to registering.,General,Visual,0.2,"03303N,prerequisites,03203N"
+358,Course Syllabus,What is the syllabus and overview for 0X008N - Innovation & Entrepreneurship?,"**Course:** 0X008N: Innovation & Entrepreneurship
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Innovation & Entrepreneurship (0X008N) is an official Core course (2 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"0X008N,syllabus,10"
+359,Course Prerequisites,What are the prerequisites for 0X008N (Innovation & Entrepreneurship)?,**0X008N - Innovation & Entrepreneurship** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"0X008N,prerequisites,none"
+360,Course Syllabus,What is the syllabus and overview for 00303N - Analysis and Design of Algorithms?,"**Course:** 00303N: Analysis and Design of Algorithms
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Analysis and Design of Algorithms (00303N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00303N,syllabus,8"
+361,Course Prerequisites,What are the prerequisites for 00303N (Analysis and Design of Algorithms)?,The prerequisite for **00303N - Analysis and Design of Algorithms** is **00108N**. You must achieve a passing grade (≥ 60% / C) in 00108N prior to registering.,General,Visual,0.2,"00303N,prerequisites,00108N"
+362,Course Syllabus,What is the syllabus and overview for 00301N - Software Engineering?,"**Course:** 00301N: Software Engineering
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Software Engineering (00301N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00301N,syllabus,8"
+363,Course Prerequisites,What are the prerequisites for 00301N (Software Engineering)?,The prerequisite for **00301N - Software Engineering** is **00110N**. You must achieve a passing grade (≥ 60% / C) in 00110N prior to registering.,General,Visual,0.2,"00301N,prerequisites,00110N"
+364,Course Syllabus,What is the syllabus and overview for 01305N - Computer Vision?,"**Course:** 01305N: Computer Vision
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computer Vision (01305N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01305N,syllabus,10"
+365,Course Prerequisites,What are the prerequisites for 01305N (Computer Vision)?,"The prerequisite for **01305N - Computer Vision** is **00101N, 00109N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00109N prior to registering.",General,Visual,0.2,"01305N,prerequisites,00101N, 00109N"
+366,Course Syllabus,What is the syllabus and overview for 00304N - Distributed Processing?,"**Course:** 00304N: Distributed Processing
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Distributed Processing (00304N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00304N,syllabus,8"
+367,Course Prerequisites,What are the prerequisites for 00304N (Distributed Processing)?,"The prerequisite for **00304N - Distributed Processing** is **00103N, 00108N**. You must achieve a passing grade (≥ 60% / C) in 00103N, 00108N prior to registering.",General,Visual,0.2,"00304N,prerequisites,00103N, 00108N"
+368,Course Syllabus,What is the syllabus and overview for 00306N - Cloud Computing?,"**Course:** 00306N: Cloud Computing
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Cloud Computing (00306N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00306N,syllabus,10"
+369,Course Prerequisites,What are the prerequisites for 00306N (Cloud Computing)?,The prerequisite for **00306N - Cloud Computing** is **00108N**. You must achieve a passing grade (≥ 60% / C) in 00108N prior to registering.,General,Visual,0.2,"00306N,prerequisites,00108N"
+370,Course Syllabus,What is the syllabus and overview for 00302N - Systems Analysis and Design?,"**Course:** 00302N: Systems Analysis and Design
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Systems Analysis and Design (00302N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00302N,syllabus,8"
+371,Course Prerequisites,What are the prerequisites for 00302N (Systems Analysis and Design)?,The prerequisite for **00302N - Systems Analysis and Design** is **00202N**. You must achieve a passing grade (≥ 60% / C) in 00202N prior to registering.,General,Visual,0.2,"00302N,prerequisites,00202N"
+372,Course Syllabus,What is the syllabus and overview for 00305N - Machine Learning?,"**Course:** 00305N: Machine Learning
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Machine Learning (00305N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00305N,syllabus,10"
+373,Course Prerequisites,What are the prerequisites for 00305N (Machine Learning)?,"The prerequisite for **00305N - Machine Learning** is **00109N, 00101N**. You must achieve a passing grade (≥ 60% / C) in 00109N, 00101N prior to registering.",General,Visual,0.2,"00305N,prerequisites,00109N, 00101N"
+374,Course Syllabus,What is the syllabus and overview for 01301N - Intelligent Programming?,"**Course:** 01301N: Intelligent Programming
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Intelligent Programming (01301N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01301N,syllabus,10"
+375,Course Prerequisites,What are the prerequisites for 01301N (Intelligent Programming)?,"The prerequisite for **01301N - Intelligent Programming** is **00108N, 00109N**. You must achieve a passing grade (≥ 60% / C) in 00108N, 00109N prior to registering.",General,Visual,0.2,"01301N,prerequisites,00108N, 00109N"
+376,Course Syllabus,What is the syllabus and overview for 03301N - Stochastic Processes?,"**Course:** 03301N: Stochastic Processes
+**Department:** 10
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Stochastic Processes (03301N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03301N,syllabus,10"
+377,Course Prerequisites,What are the prerequisites for 03301N (Stochastic Processes)?,"The prerequisite for **03301N - Stochastic Processes** is **00101N, 00201N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00201N prior to registering.",General,Visual,0.2,"03301N,prerequisites,00101N, 00201N"
+378,Course Syllabus,What is the syllabus and overview for 00307N - Operating Systems?,"**Course:** 00307N: Operating Systems
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Operating Systems (00307N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"00307N,syllabus,8"
+379,Course Prerequisites,What are the prerequisites for 00307N (Operating Systems)?,"The prerequisite for **00307N - Operating Systems** is **00103N, 00108N**. You must achieve a passing grade (≥ 60% / C) in 00103N, 00108N prior to registering.",General,Visual,0.2,"00307N,prerequisites,00103N, 00108N"
+380,Course Syllabus,What is the syllabus and overview for 02306N - Information Security Management?,"**Course:** 02306N: Information Security Management
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Information Security Management (02306N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02306N,syllabus,8"
+381,Course Prerequisites,What are the prerequisites for 02306N (Information Security Management)?,"The prerequisite for **02306N - Information Security Management** is **00202N, 02201N**. You must achieve a passing grade (≥ 60% / C) in 00202N, 02201N prior to registering.",General,Visual,0.2,"02306N,prerequisites,00202N, 02201N"
+382,Course Syllabus,What is the syllabus and overview for 02304N - Computer Network Security?,"**Course:** 02304N: Computer Network Security
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computer Network Security (02304N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02304N,syllabus,8"
+383,Course Prerequisites,What are the prerequisites for 02304N (Computer Network Security)?,"The prerequisite for **02304N - Computer Network Security** is **00207N, 02203N**. You must achieve a passing grade (≥ 60% / C) in 00207N, 02203N prior to registering.",General,Visual,0.2,"02304N,prerequisites,00207N, 02203N"
+384,Course Syllabus,What is the syllabus and overview for 02303N - Secure Software Development?,"**Course:** 02303N: Secure Software Development
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Secure Software Development (02303N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02303N,syllabus,8"
+385,Course Prerequisites,What are the prerequisites for 02303N (Secure Software Development)?,"The prerequisite for **02303N - Secure Software Development** is **00110N, 02201N**. You must achieve a passing grade (≥ 60% / C) in 00110N, 02201N prior to registering.",General,Visual,0.2,"02303N,prerequisites,00110N, 02201N"
+386,Course Syllabus,What is the syllabus and overview for 02305N - Data Integrity and Authentication?,"**Course:** 02305N: Data Integrity and Authentication
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Data Integrity and Authentication (02305N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02305N,syllabus,8"
+387,Course Prerequisites,What are the prerequisites for 02305N (Data Integrity and Authentication)?,"The prerequisite for **02305N - Data Integrity and Authentication** is **00202N, 02203N**. You must achieve a passing grade (≥ 60% / C) in 00202N, 02203N prior to registering.",General,Visual,0.2,"02305N,prerequisites,00202N, 02203N"
+388,Course Syllabus,What is the syllabus and overview for 02302N - Operating Systems Security?,"**Course:** 02302N: Operating Systems Security
+**Department:** 8
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Operating Systems Security (02302N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02302N,syllabus,8"
+389,Course Prerequisites,What are the prerequisites for 02302N (Operating Systems Security)?,"The prerequisite for **02302N - Operating Systems Security** is **02201N, 00307N**. You must achieve a passing grade (≥ 60% / C) in 02201N, 00307N prior to registering.",General,Visual,0.2,"02302N,prerequisites,02201N, 00307N"
+390,Course Syllabus,What is the syllabus and overview for 4170307N - Design and Analysis of Algorithms?,"**Course:** 4170307N: Design and Analysis of Algorithms
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Design and Analysis of Algorithms (4170307N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170307N,syllabus,11"
+391,Course Prerequisites,What are the prerequisites for 4170307N (Design and Analysis of Algorithms)?,The prerequisite for **4170307N - Design and Analysis of Algorithms** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170307N,prerequisites,4170206N"
+392,Course Syllabus,What is the syllabus and overview for 4170303N - Operating systems?,"**Course:** 4170303N: Operating systems
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Operating systems (4170303N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170303N,syllabus,11"
+393,Course Prerequisites,What are the prerequisites for 4170303N (Operating systems)?,The prerequisite for **4170303N - Operating systems** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170303N,prerequisites,4170206N"
+394,Course Syllabus,What is the syllabus and overview for 4170308N - Human Computer Interaction?,"**Course:** 4170308N: Human Computer Interaction
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Human Computer Interaction (4170308N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170308N,syllabus,11"
+395,Course Prerequisites,What are the prerequisites for 4170308N (Human Computer Interaction)?,The prerequisite for **4170308N - Human Computer Interaction** is **4170204N**. You must achieve a passing grade (≥ 60% / C) in 4170204N prior to registering.,General,Visual,0.2,"4170308N,prerequisites,4170204N"
+396,Course Syllabus,What is the syllabus and overview for 4170302N - Numerical Computation?,"**Course:** 4170302N: Numerical Computation
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Numerical Computation (4170302N) is an official Core course (2 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170302N,syllabus,11"
+397,Course Prerequisites,What are the prerequisites for 4170302N (Numerical Computation)?,**4170302N - Numerical Computation** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170302N,prerequisites,none"
+398,Course Syllabus,What is the syllabus and overview for 4170311N - Graphic Programming?,"**Course:** 4170311N: Graphic Programming
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Graphic Programming (4170311N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170311N,syllabus,11"
+399,Course Prerequisites,What are the prerequisites for 4170311N (Graphic Programming)?,The prerequisite for **4170311N - Graphic Programming** is **4170208N**. You must achieve a passing grade (≥ 60% / C) in 4170208N prior to registering.,General,Visual,0.2,"4170311N,prerequisites,4170208N"
+400,Course Syllabus,What is the syllabus and overview for 4170309N - The User Interface Design?,"**Course:** 4170309N: The User Interface Design
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** The User Interface Design (4170309N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170309N,syllabus,11"
+401,Course Prerequisites,What are the prerequisites for 4170309N (The User Interface Design)?,The prerequisite for **4170309N - The User Interface Design** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170309N,prerequisites,4170203N"
+402,Course Syllabus,What is the syllabus and overview for 4170306N - AI for Game?,"**Course:** 4170306N: AI for Game
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** AI for Game (4170306N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170306N,syllabus,11"
+403,Course Prerequisites,What are the prerequisites for 4170306N (AI for Game)?,The prerequisite for **4170306N - AI for Game** is **4170205N**. You must achieve a passing grade (≥ 60% / C) in 4170205N prior to registering.,General,Visual,0.2,"4170306N,prerequisites,4170205N"
+404,Course Syllabus,What is the syllabus and overview for 4170304N - Software Requirements Analysis?,"**Course:** 4170304N: Software Requirements Analysis
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Software Requirements Analysis (4170304N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170304N,syllabus,11"
+405,Course Prerequisites,What are the prerequisites for 4170304N (Software Requirements Analysis)?,The prerequisite for **4170304N - Software Requirements Analysis** is **4170207N**. You must achieve a passing grade (≥ 60% / C) in 4170207N prior to registering.,General,Visual,0.2,"4170304N,prerequisites,4170207N"
+406,Course Syllabus,What is the syllabus and overview for 4170305N - Database?,"**Course:** 4170305N: Database
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Database (4170305N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170305N,syllabus,11"
+407,Course Prerequisites,What are the prerequisites for 4170305N (Database)?,The prerequisite for **4170305N - Database** is **4170204N**. You must achieve a passing grade (≥ 60% / C) in 4170204N prior to registering.,General,Visual,0.2,"4170305N,prerequisites,4170204N"
+408,Course Syllabus,What is the syllabus and overview for 4170310N - Computational Complexity?,"**Course:** 4170310N: Computational Complexity
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Computational Complexity (4170310N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170310N,syllabus,11"
+409,Course Prerequisites,What are the prerequisites for 4170310N (Computational Complexity)?,The prerequisite for **4170310N - Computational Complexity** is **4170307N**. You must achieve a passing grade (≥ 60% / C) in 4170307N prior to registering.,General,Visual,0.2,"4170310N,prerequisites,4170307N"
+410,Course Syllabus,What is the syllabus and overview for 4170319N - Data Mining?,"**Course:** 4170319N: Data Mining
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Data Mining (4170319N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170319N,syllabus,11"
+411,Course Prerequisites,What are the prerequisites for 4170319N (Data Mining)?,The prerequisite for **4170319N - Data Mining** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170319N,prerequisites,4170206N"
+412,Course Syllabus,What is the syllabus and overview for 4170301N - Linear Algebra?,"**Course:** 4170301N: Linear Algebra
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 2 credits
+**Type:** Core
+**Overview:** Linear Algebra (4170301N) is an official Core course (2 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170301N,syllabus,11"
+413,Course Prerequisites,What are the prerequisites for 4170301N (Linear Algebra)?,**4170301N - Linear Algebra** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170301N,prerequisites,none"
+414,Course Syllabus,What is the syllabus and overview for 4170312N - Intelligent Systems?,"**Course:** 4170312N: Intelligent Systems
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Intelligent Systems (4170312N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170312N,syllabus,11"
+415,Course Prerequisites,What are the prerequisites for 4170312N (Intelligent Systems)?,The prerequisite for **4170312N - Intelligent Systems** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170312N,prerequisites,4170203N"
+416,Course Syllabus,What is the syllabus and overview for 4170313N - Statistical Software?,"**Course:** 4170313N: Statistical Software
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Statistical Software (4170313N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170313N,syllabus,11"
+417,Course Prerequisites,What are the prerequisites for 4170313N (Statistical Software)?,**4170313N - Statistical Software** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170313N,prerequisites,none"
+418,Course Syllabus,What is the syllabus and overview for 4170320N - Project Management?,"**Course:** 4170320N: Project Management
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Project Management (4170320N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170320N,syllabus,11"
+419,Course Prerequisites,What are the prerequisites for 4170320N (Project Management)?,The prerequisite for **4170320N - Project Management** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170320N,prerequisites,4170206N"
+420,Course Syllabus,What is the syllabus and overview for 4170318N - Information Systems Security?,"**Course:** 4170318N: Information Systems Security
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Information Systems Security (4170318N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170318N,syllabus,11"
+421,Course Prerequisites,What are the prerequisites for 4170318N (Information Systems Security)?,**4170318N - Information Systems Security** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170318N,prerequisites,none"
+422,Course Syllabus,What is the syllabus and overview for 4170321N - E-Learning Techniques?,"**Course:** 4170321N: E-Learning Techniques
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** E-Learning Techniques (4170321N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170321N,syllabus,11"
+423,Course Prerequisites,What are the prerequisites for 4170321N (E-Learning Techniques)?,The prerequisite for **4170321N - E-Learning Techniques** is **4170303N**. You must achieve a passing grade (≥ 60% / C) in 4170303N prior to registering.,General,Visual,0.2,"4170321N,prerequisites,4170303N"
+424,Course Syllabus,What is the syllabus and overview for 4170315N - Web Software Engineering?,"**Course:** 4170315N: Web Software Engineering
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Web Software Engineering (4170315N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170315N,syllabus,11"
+425,Course Prerequisites,What are the prerequisites for 4170315N (Web Software Engineering)?,The prerequisite for **4170315N - Web Software Engineering** is **4170207N**. You must achieve a passing grade (≥ 60% / C) in 4170207N prior to registering.,General,Visual,0.2,"4170315N,prerequisites,4170207N"
+426,Course Syllabus,What is the syllabus and overview for 4170316N - System Simulation and Modeling?,"**Course:** 4170316N: System Simulation and Modeling
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** System Simulation and Modeling (4170316N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170316N,syllabus,11"
+427,Course Prerequisites,What are the prerequisites for 4170316N (System Simulation and Modeling)?,The prerequisite for **4170316N - System Simulation and Modeling** is **4170303N**. You must achieve a passing grade (≥ 60% / C) in 4170303N prior to registering.,General,Visual,0.2,"4170316N,prerequisites,4170303N"
+428,Course Syllabus,What is the syllabus and overview for 4170317N - Graphs and Networks?,"**Course:** 4170317N: Graphs and Networks
+**Department:** 11
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Graphs and Networks (4170317N) is an official Elective course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170317N,syllabus,11"
+429,Course Prerequisites,What are the prerequisites for 4170317N (Graphs and Networks)?,**4170317N - Graphs and Networks** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170317N,prerequisites,none"
+430,Course Syllabus,What is the syllabus and overview for 01304N - Embedded Systems?,"**Course:** 01304N: Embedded Systems
+**Department:** 9
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Embedded Systems (01304N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01304N,syllabus,9"
+431,Course Prerequisites,What are the prerequisites for 01304N (Embedded Systems)?,The prerequisite for **01304N - Embedded Systems** is **01303N**. You must achieve a passing grade (≥ 60% / C) in 01303N prior to registering.,General,Visual,0.2,"01304N,prerequisites,01303N"
+432,Course Syllabus,What is the syllabus and overview for 01303N - Modern Control Systems?,"**Course:** 01303N: Modern Control Systems
+**Department:** 9
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Modern Control Systems (01303N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01303N,syllabus,9"
+433,Course Prerequisites,What are the prerequisites for 01303N (Modern Control Systems)?,The prerequisite for **01303N - Modern Control Systems** is **00101N**. You must achieve a passing grade (≥ 60% / C) in 00101N prior to registering.,General,Visual,0.2,"01303N,prerequisites,00101N"
+434,Course Syllabus,What is the syllabus and overview for 01302N - AI Platforms?,"**Course:** 01302N: AI Platforms
+**Department:** 9
+**Study Year:** Year 3 (Level 3)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** AI Platforms (01302N) is an official Core course (3 credit hours) offered in Year 3 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01302N,syllabus,9"
+435,Course Prerequisites,What are the prerequisites for 01302N (AI Platforms)?,The prerequisite for **01302N - AI Platforms** is **00109N**. You must achieve a passing grade (≥ 60% / C) in 00109N prior to registering.,General,Visual,0.2,"01302N,prerequisites,00109N"
+436,Course Syllabus,What is the syllabus and overview for 01405N - Reinforcement Learning?,"**Course:** 01405N: Reinforcement Learning
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Reinforcement Learning (01405N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01405N,syllabus,10"
+437,Course Prerequisites,What are the prerequisites for 01405N (Reinforcement Learning)?,"The prerequisite for **01405N - Reinforcement Learning** is **00305N, 01202N**. You must achieve a passing grade (≥ 60% / C) in 00305N, 01202N prior to registering.",General,Visual,0.2,"01405N,prerequisites,00305N, 01202N"
+438,Course Syllabus,What is the syllabus and overview for 03408N - Project II?,"**Course:** 03408N: Project II
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project II (03408N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03408N,syllabus,10"
+439,Course Prerequisites,What are the prerequisites for 03408N (Project II)?,The prerequisite for **03408N - Project II** is **03404N**. You must achieve a passing grade (≥ 60% / C) in 03404N prior to registering.,General,Visual,0.2,"03408N,prerequisites,03404N"
+440,Course Syllabus,What is the syllabus and overview for 03402N - Introduction to Social Networks?,"**Course:** 03402N: Introduction to Social Networks
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Introduction to Social Networks (03402N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03402N,syllabus,10"
+441,Course Prerequisites,What are the prerequisites for 03402N (Introduction to Social Networks)?,The prerequisite for **03402N - Introduction to Social Networks** is **00201N**. You must achieve a passing grade (≥ 60% / C) in 00201N prior to registering.,General,Visual,0.2,"03402N,prerequisites,00201N"
+442,Course Syllabus,What is the syllabus and overview for 03404N - Project I?,"**Course:** 03404N: Project I
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project I (03404N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03404N,syllabus,10"
+443,Course Prerequisites,What are the prerequisites for 03404N (Project I)?,**03404N - Project I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"03404N,prerequisites,none"
+444,Course Syllabus,What is the syllabus and overview for 03415N - Distributed Database Systems?,"**Course:** 03415N: Distributed Database Systems
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Distributed Database Systems (03415N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03415N,syllabus,10"
+445,Course Prerequisites,What are the prerequisites for 03415N (Distributed Database Systems)?,The prerequisite for **03415N - Distributed Database Systems** is **00202N**. You must achieve a passing grade (≥ 60% / C) in 00202N prior to registering.,General,Visual,0.2,"03415N,prerequisites,00202N"
+446,Course Syllabus,What is the syllabus and overview for 03410N - Non-Linear and Combinatorial Optimization?,"**Course:** 03410N: Non-Linear and Combinatorial Optimization
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Non-Linear and Combinatorial Optimization (03410N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03410N,syllabus,10"
+447,Course Prerequisites,What are the prerequisites for 03410N (Non-Linear and Combinatorial Optimization)?,"The prerequisite for **03410N - Non-Linear and Combinatorial Optimization** is **00101N, 00108N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00108N prior to registering.",General,Visual,0.2,"03410N,prerequisites,00101N, 00108N"
+448,Course Syllabus,What is the syllabus and overview for 01401N - Deep Learning?,"**Course:** 01401N: Deep Learning
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Deep Learning (01401N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01401N,syllabus,10"
+449,Course Prerequisites,What are the prerequisites for 01401N (Deep Learning)?,"The prerequisite for **01401N - Deep Learning** is **00305N, 01204N**. You must achieve a passing grade (≥ 60% / C) in 00305N, 01204N prior to registering.",General,Visual,0.2,"01401N,prerequisites,00305N, 01204N"
+450,Course Syllabus,What is the syllabus and overview for 01403N - Natural Language Processing?,"**Course:** 01403N: Natural Language Processing
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Natural Language Processing (01403N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01403N,syllabus,10"
+451,Course Prerequisites,What are the prerequisites for 01403N (Natural Language Processing)?,The prerequisite for **01403N - Natural Language Processing** is **00305N**. You must achieve a passing grade (≥ 60% / C) in 00305N prior to registering.,General,Visual,0.2,"01403N,prerequisites,00305N"
+452,Course Syllabus,What is the syllabus and overview for 01417N - Business Intelligence Analysis?,"**Course:** 01417N: Business Intelligence Analysis
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Business Intelligence Analysis (01417N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01417N,syllabus,10"
+453,Course Prerequisites,What are the prerequisites for 01417N (Business Intelligence Analysis)?,The prerequisite for **01417N - Business Intelligence Analysis** is **03303N**. You must achieve a passing grade (≥ 60% / C) in 03303N prior to registering.,General,Visual,0.2,"01417N,prerequisites,03303N"
+454,Course Syllabus,What is the syllabus and overview for 03414N - Concurrent Algorithms and Data Structures?,"**Course:** 03414N: Concurrent Algorithms and Data Structures
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Concurrent Algorithms and Data Structures (03414N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03414N,syllabus,10"
+455,Course Prerequisites,What are the prerequisites for 03414N (Concurrent Algorithms and Data Structures)?,The prerequisite for **03414N - Concurrent Algorithms and Data Structures** is **00108N**. You must achieve a passing grade (≥ 60% / C) in 00108N prior to registering.,General,Visual,0.2,"03414N,prerequisites,00108N"
+456,Course Syllabus,What is the syllabus and overview for 01412N - Intelligence Technology Trends?,"**Course:** 01412N: Intelligence Technology Trends
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Intelligence Technology Trends (01412N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01412N,syllabus,9"
+457,Course Prerequisites,What are the prerequisites for 01412N (Intelligence Technology Trends)?,The prerequisite for **01412N - Intelligence Technology Trends** is **00109N**. You must achieve a passing grade (≥ 60% / C) in 00109N prior to registering.,General,Visual,0.2,"01412N,prerequisites,00109N"
+458,Course Syllabus,What is the syllabus and overview for 03401N - Big Data Analytics?,"**Course:** 03401N: Big Data Analytics
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Big Data Analytics (03401N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03401N,syllabus,10"
+459,Course Prerequisites,What are the prerequisites for 03401N (Big Data Analytics)?,"The prerequisite for **03401N - Big Data Analytics** is **00105N, 00206N, 00305N**. You must achieve a passing grade (≥ 60% / C) in 00105N, 00206N, 00305N prior to registering.",General,Visual,0.2,"03401N,prerequisites,00105N, 00206N, 00305N"
+460,Course Syllabus,What is the syllabus and overview for 03409N - Convex Optimization?,"**Course:** 03409N: Convex Optimization
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Convex Optimization (03409N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03409N,syllabus,10"
+461,Course Prerequisites,What are the prerequisites for 03409N (Convex Optimization)?,"The prerequisite for **03409N - Convex Optimization** is **00101N, 00203N, 01201N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00203N, 01201N prior to registering.",General,Visual,0.2,"03409N,prerequisites,00101N, 00203N, 01201N"
+462,Course Syllabus,What is the syllabus and overview for 03412N - Bayesian Statistics?,"**Course:** 03412N: Bayesian Statistics
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Bayesian Statistics (03412N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03412N,syllabus,10"
+463,Course Prerequisites,What are the prerequisites for 03412N (Bayesian Statistics)?,The prerequisite for **03412N - Bayesian Statistics** is **00201N**. You must achieve a passing grade (≥ 60% / C) in 00201N prior to registering.,General,Visual,0.2,"03412N,prerequisites,00201N"
+464,Course Syllabus,What is the syllabus and overview for 01409N - Speech Recognition?,"**Course:** 01409N: Speech Recognition
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Speech Recognition (01409N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01409N,syllabus,9"
+465,Course Prerequisites,What are the prerequisites for 01409N (Speech Recognition)?,The prerequisite for **01409N - Speech Recognition** is **01303N**. You must achieve a passing grade (≥ 60% / C) in 01303N prior to registering.,General,Visual,0.2,"01409N,prerequisites,01303N"
+466,Course Syllabus,What is the syllabus and overview for 01410N - Natural Language Understanding?,"**Course:** 01410N: Natural Language Understanding
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Natural Language Understanding (01410N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01410N,syllabus,9"
+467,Course Prerequisites,What are the prerequisites for 01410N (Natural Language Understanding)?,The prerequisite for **01410N - Natural Language Understanding** is **01403N**. You must achieve a passing grade (≥ 60% / C) in 01403N prior to registering.,General,Visual,0.2,"01410N,prerequisites,01403N"
+468,Course Syllabus,What is the syllabus and overview for 01416N - Game Theory?,"**Course:** 01416N: Game Theory
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Game Theory (01416N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01416N,syllabus,9"
+469,Course Prerequisites,What are the prerequisites for 01416N (Game Theory)?,The prerequisite for **01416N - Game Theory** is **01202N**. You must achieve a passing grade (≥ 60% / C) in 01202N prior to registering.,General,Visual,0.2,"01416N,prerequisites,01202N"
+470,Course Syllabus,What is the syllabus and overview for 03416N - Advanced Database Systems?,"**Course:** 03416N: Advanced Database Systems
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Advanced Database Systems (03416N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03416N,syllabus,10"
+471,Course Prerequisites,What are the prerequisites for 03416N (Advanced Database Systems)?,The prerequisite for **03416N - Advanced Database Systems** is **00202N**. You must achieve a passing grade (≥ 60% / C) in 00202N prior to registering.,General,Visual,0.2,"03416N,prerequisites,00202N"
+472,Course Syllabus,What is the syllabus and overview for 03418N - Advanced Topics in Data Science and AI?,"**Course:** 03418N: Advanced Topics in Data Science and AI
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Advanced Topics in Data Science and AI (03418N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03418N,syllabus,10"
+473,Course Prerequisites,What are the prerequisites for 03418N (Advanced Topics in Data Science and AI)?,"The prerequisite for **03418N - Advanced Topics in Data Science and AI** is **00109N, 00305N**. You must achieve a passing grade (≥ 60% / C) in 00109N, 00305N prior to registering.",General,Visual,0.2,"03418N,prerequisites,00109N, 00305N"
+474,Course Syllabus,What is the syllabus and overview for 01413N - Internet of Things II?,"**Course:** 01413N: Internet of Things II
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Internet of Things II (01413N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01413N,syllabus,9"
+475,Course Prerequisites,What are the prerequisites for 01413N (Internet of Things II)?,The prerequisite for **01413N - Internet of Things II** is **01402N**. You must achieve a passing grade (≥ 60% / C) in 01402N prior to registering.,General,Visual,0.2,"01413N,prerequisites,01402N"
+476,Course Syllabus,What is the syllabus and overview for 01414N - Knowledge-Based AI?,"**Course:** 01414N: Knowledge-Based AI
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Knowledge-Based AI (01414N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01414N,syllabus,9"
+477,Course Prerequisites,What are the prerequisites for 01414N (Knowledge-Based AI)?,The prerequisite for **01414N - Knowledge-Based AI** is **00305N**. You must achieve a passing grade (≥ 60% / C) in 00305N prior to registering.,General,Visual,0.2,"01414N,prerequisites,00305N"
+478,Course Syllabus,What is the syllabus and overview for 03411N - Multivariate Statistical Analysis?,"**Course:** 03411N: Multivariate Statistical Analysis
+**Department:** 10
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Multivariate Statistical Analysis (03411N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"03411N,syllabus,10"
+479,Course Prerequisites,What are the prerequisites for 03411N (Multivariate Statistical Analysis)?,The prerequisite for **03411N - Multivariate Statistical Analysis** is **00201N**. You must achieve a passing grade (≥ 60% / C) in 00201N prior to registering.,General,Visual,0.2,"03411N,prerequisites,00201N"
+480,Course Syllabus,What is the syllabus and overview for 02407N - Law and Cybersecurity?,"**Course:** 02407N: Law and Cybersecurity
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Law and Cybersecurity (02407N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02407N,syllabus,8"
+481,Course Prerequisites,What are the prerequisites for 02407N (Law and Cybersecurity)?,The prerequisite for **02407N - Law and Cybersecurity** is **02201N**. You must achieve a passing grade (≥ 60% / C) in 02201N prior to registering.,General,Visual,0.2,"02407N,prerequisites,02201N"
+482,Course Syllabus,What is the syllabus and overview for 02408N - Project II?,"**Course:** 02408N: Project II
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project II (02408N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02408N,syllabus,8"
+483,Course Prerequisites,What are the prerequisites for 02408N (Project II)?,The prerequisite for **02408N - Project II** is **02404N**. You must achieve a passing grade (≥ 60% / C) in 02404N prior to registering.,General,Visual,0.2,"02408N,prerequisites,02404N"
+484,Course Syllabus,What is the syllabus and overview for 02405N - Cybersecurity Risk Management?,"**Course:** 02405N: Cybersecurity Risk Management
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Cybersecurity Risk Management (02405N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02405N,syllabus,8"
+485,Course Prerequisites,What are the prerequisites for 02405N (Cybersecurity Risk Management)?,"The prerequisite for **02405N - Cybersecurity Risk Management** is **00206N, 00305N, 02306N**. You must achieve a passing grade (≥ 60% / C) in 00206N, 00305N, 02306N prior to registering.",General,Visual,0.2,"02405N,prerequisites,00206N, 00305N, 02306N"
+486,Course Syllabus,What is the syllabus and overview for 02403N - Human Security?,"**Course:** 02403N: Human Security
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Human Security (02403N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02403N,syllabus,8"
+487,Course Prerequisites,What are the prerequisites for 02403N (Human Security)?,The prerequisite for **02403N - Human Security** is **02201N**. You must achieve a passing grade (≥ 60% / C) in 02201N prior to registering.,General,Visual,0.2,"02403N,prerequisites,02201N"
+488,Course Syllabus,What is the syllabus and overview for 02410N - Proactive Computer Security?,"**Course:** 02410N: Proactive Computer Security
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Proactive Computer Security (02410N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02410N,syllabus,8"
+489,Course Prerequisites,What are the prerequisites for 02410N (Proactive Computer Security)?,"The prerequisite for **02410N - Proactive Computer Security** is **00110N, 02201N**. You must achieve a passing grade (≥ 60% / C) in 00110N, 02201N prior to registering.",General,Visual,0.2,"02410N,prerequisites,00110N, 02201N"
+490,Course Syllabus,What is the syllabus and overview for 02416N - Mobile Computing?,"**Course:** 02416N: Mobile Computing
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Mobile Computing (02416N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02416N,syllabus,8"
+491,Course Prerequisites,What are the prerequisites for 02416N (Mobile Computing)?,**02416N - Mobile Computing** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"02416N,prerequisites,none"
+492,Course Syllabus,What is the syllabus and overview for 02401N - Social Network Computing?,"**Course:** 02401N: Social Network Computing
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Social Network Computing (02401N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02401N,syllabus,8"
+493,Course Prerequisites,What are the prerequisites for 02401N (Social Network Computing)?,"The prerequisite for **02401N - Social Network Computing** is **00207N, 02203N**. You must achieve a passing grade (≥ 60% / C) in 00207N, 02203N prior to registering.",General,Visual,0.2,"02401N,prerequisites,00207N, 02203N"
+494,Course Syllabus,What is the syllabus and overview for 02406N - Digital Forensics?,"**Course:** 02406N: Digital Forensics
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Digital Forensics (02406N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02406N,syllabus,8"
+495,Course Prerequisites,What are the prerequisites for 02406N (Digital Forensics)?,"The prerequisite for **02406N - Digital Forensics** is **00207N, 00307N**. You must achieve a passing grade (≥ 60% / C) in 00207N, 00307N prior to registering.",General,Visual,0.2,"02406N,prerequisites,00207N, 00307N"
+496,Course Syllabus,What is the syllabus and overview for 02412N - Blockchain Security?,"**Course:** 02412N: Blockchain Security
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Blockchain Security (02412N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02412N,syllabus,8"
+497,Course Prerequisites,What are the prerequisites for 02412N (Blockchain Security)?,"The prerequisite for **02412N - Blockchain Security** is **00202N, 00207N**. You must achieve a passing grade (≥ 60% / C) in 00202N, 00207N prior to registering.",General,Visual,0.2,"02412N,prerequisites,00202N, 00207N"
+498,Course Syllabus,What is the syllabus and overview for 02413N - Cloud Computing Security?,"**Course:** 02413N: Cloud Computing Security
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Cloud Computing Security (02413N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02413N,syllabus,8"
+499,Course Prerequisites,What are the prerequisites for 02413N (Cloud Computing Security)?,"The prerequisite for **02413N - Cloud Computing Security** is **00306N, 02203N**. You must achieve a passing grade (≥ 60% / C) in 00306N, 02203N prior to registering.",General,Visual,0.2,"02413N,prerequisites,00306N, 02203N"
+500,Course Syllabus,What is the syllabus and overview for 02404N - Project I?,"**Course:** 02404N: Project I
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project I (02404N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02404N,syllabus,8"
+501,Course Prerequisites,What are the prerequisites for 02404N (Project I)?,**02404N - Project I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"02404N,prerequisites,none"
+502,Course Syllabus,What is the syllabus and overview for 02415N - Internet of Things?,"**Course:** 02415N: Internet of Things
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Internet of Things (02415N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02415N,syllabus,8"
+503,Course Prerequisites,What are the prerequisites for 02415N (Internet of Things)?,**02415N - Internet of Things** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"02415N,prerequisites,none"
+504,Course Syllabus,What is the syllabus and overview for 02402N - Security of Distributed Systems?,"**Course:** 02402N: Security of Distributed Systems
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Security of Distributed Systems (02402N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02402N,syllabus,8"
+505,Course Prerequisites,What are the prerequisites for 02402N (Security of Distributed Systems)?,"The prerequisite for **02402N - Security of Distributed Systems** is **00207N, 02203N, 00307N**. You must achieve a passing grade (≥ 60% / C) in 00207N, 02203N, 00307N prior to registering.",General,Visual,0.2,"02402N,prerequisites,00207N, 02203N, 00307N"
+506,Course Syllabus,What is the syllabus and overview for 02411N - Software Security Engineering?,"**Course:** 02411N: Software Security Engineering
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Software Security Engineering (02411N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02411N,syllabus,8"
+507,Course Prerequisites,What are the prerequisites for 02411N (Software Security Engineering)?,"The prerequisite for **02411N - Software Security Engineering** is **00301N, 02303N**. You must achieve a passing grade (≥ 60% / C) in 00301N, 02303N prior to registering.",General,Visual,0.2,"02411N,prerequisites,00301N, 02303N"
+508,Course Syllabus,What is the syllabus and overview for 02414N - Social Networks Analytics?,"**Course:** 02414N: Social Networks Analytics
+**Department:** 8
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Social Networks Analytics (02414N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"02414N,syllabus,8"
+509,Course Prerequisites,What are the prerequisites for 02414N (Social Networks Analytics)?,"The prerequisite for **02414N - Social Networks Analytics** is **00101N, 00201N, 02401N**. You must achieve a passing grade (≥ 60% / C) in 00101N, 00201N, 02401N prior to registering.",General,Visual,0.2,"02414N,prerequisites,00101N, 00201N, 02401N"
+510,Course Syllabus,What is the syllabus and overview for 4170409N - Project I?,"**Course:** 4170409N: Project I
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project I (4170409N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170409N,syllabus,11"
+511,Course Prerequisites,What are the prerequisites for 4170409N (Project I)?,**4170409N - Project I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"4170409N,prerequisites,none"
+512,Course Syllabus,What is the syllabus and overview for 4170403N - Web Programming?,"**Course:** 4170403N: Web Programming
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Web Programming (4170403N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170403N,syllabus,11"
+513,Course Prerequisites,What are the prerequisites for 4170403N (Web Programming)?,The prerequisite for **4170403N - Web Programming** is **4170203N**. You must achieve a passing grade (≥ 60% / C) in 4170203N prior to registering.,General,Visual,0.2,"4170403N,prerequisites,4170203N"
+514,Course Syllabus,What is the syllabus and overview for 4170405N - Advanced Methods for Multimedia?,"**Course:** 4170405N: Advanced Methods for Multimedia
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Advanced Methods for Multimedia (4170405N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170405N,syllabus,11"
+515,Course Prerequisites,What are the prerequisites for 4170405N (Advanced Methods for Multimedia)?,The prerequisite for **4170405N - Advanced Methods for Multimedia** is **4170208N**. You must achieve a passing grade (≥ 60% / C) in 4170208N prior to registering.,General,Visual,0.2,"4170405N,prerequisites,4170208N"
+516,Course Syllabus,What is the syllabus and overview for 4170410N - Project II?,"**Course:** 4170410N: Project II
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project II (4170410N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170410N,syllabus,11"
+517,Course Prerequisites,What are the prerequisites for 4170410N (Project II)?,The prerequisite for **4170410N - Project II** is **4170409N**. You must achieve a passing grade (≥ 60% / C) in 4170409N prior to registering.,General,Visual,0.2,"4170410N,prerequisites,4170409N"
+518,Course Syllabus,What is the syllabus and overview for 4170414N - Cyber Policy- Law and Cyber Crime Investigation?,"**Course:** 4170414N: Cyber Policy- Law and Cyber Crime Investigation
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Cyber Policy- Law and Cyber Crime Investigation (4170414N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170414N,syllabus,11"
+519,Course Prerequisites,What are the prerequisites for 4170414N (Cyber Policy- Law and Cyber Crime Investigation)?,The prerequisite for **4170414N - Cyber Policy- Law and Cyber Crime Investigation** is **4170308N**. You must achieve a passing grade (≥ 60% / C) in 4170308N prior to registering.,General,Visual,0.2,"4170414N,prerequisites,4170308N"
+520,Course Syllabus,What is the syllabus and overview for 4170407N - Cloud Software Development?,"**Course:** 4170407N: Cloud Software Development
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Cloud Software Development (4170407N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170407N,syllabus,11"
+521,Course Prerequisites,What are the prerequisites for 4170407N (Cloud Software Development)?,The prerequisite for **4170407N - Cloud Software Development** is **4170303N**. You must achieve a passing grade (≥ 60% / C) in 4170303N prior to registering.,General,Visual,0.2,"4170407N,prerequisites,4170303N"
+522,Course Syllabus,What is the syllabus and overview for 4170402N - Game Design & Modeling?,"**Course:** 4170402N: Game Design & Modeling
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Game Design & Modeling (4170402N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170402N,syllabus,11"
+523,Course Prerequisites,What are the prerequisites for 4170402N (Game Design & Modeling)?,The prerequisite for **4170402N - Game Design & Modeling** is **4170306N**. You must achieve a passing grade (≥ 60% / C) in 4170306N prior to registering.,General,Visual,0.2,"4170402N,prerequisites,4170306N"
+524,Course Syllabus,What is the syllabus and overview for 4170401N - Computer Graphics?,"**Course:** 4170401N: Computer Graphics
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Computer Graphics (4170401N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170401N,syllabus,11"
+525,Course Prerequisites,What are the prerequisites for 4170401N (Computer Graphics)?,The prerequisite for **4170401N - Computer Graphics** is **4170208N**. You must achieve a passing grade (≥ 60% / C) in 4170208N prior to registering.,General,Visual,0.2,"4170401N,prerequisites,4170208N"
+526,Course Syllabus,What is the syllabus and overview for 4170404N - Mobile Application Development?,"**Course:** 4170404N: Mobile Application Development
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Mobile Application Development (4170404N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170404N,syllabus,11"
+527,Course Prerequisites,What are the prerequisites for 4170404N (Mobile Application Development)?,The prerequisite for **4170404N - Mobile Application Development** is **4170303N**. You must achieve a passing grade (≥ 60% / C) in 4170303N prior to registering.,General,Visual,0.2,"4170404N,prerequisites,4170303N"
+528,Course Syllabus,What is the syllabus and overview for 4170411N - E-Business Technologies?,"**Course:** 4170411N: E-Business Technologies
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** E-Business Technologies (4170411N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170411N,syllabus,11"
+529,Course Prerequisites,What are the prerequisites for 4170411N (E-Business Technologies)?,The prerequisite for **4170411N - E-Business Technologies** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170411N,prerequisites,4170206N"
+530,Course Syllabus,What is the syllabus and overview for 4170412N - Large-Scale Database Systems?,"**Course:** 4170412N: Large-Scale Database Systems
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Large-Scale Database Systems (4170412N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170412N,syllabus,11"
+531,Course Prerequisites,What are the prerequisites for 4170412N (Large-Scale Database Systems)?,The prerequisite for **4170412N - Large-Scale Database Systems** is **4170305N**. You must achieve a passing grade (≥ 60% / C) in 4170305N prior to registering.,General,Visual,0.2,"4170412N,prerequisites,4170305N"
+532,Course Syllabus,What is the syllabus and overview for 4170413N - Performance Modeling?,"**Course:** 4170413N: Performance Modeling
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Performance Modeling (4170413N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170413N,syllabus,11"
+533,Course Prerequisites,What are the prerequisites for 4170413N (Performance Modeling)?,The prerequisite for **4170413N - Performance Modeling** is **4170307N**. You must achieve a passing grade (≥ 60% / C) in 4170307N prior to registering.,General,Visual,0.2,"4170413N,prerequisites,4170307N"
+534,Course Syllabus,What is the syllabus and overview for 4170408N - Information Retrieval?,"**Course:** 4170408N: Information Retrieval
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Information Retrieval (4170408N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170408N,syllabus,11"
+535,Course Prerequisites,What are the prerequisites for 4170408N (Information Retrieval)?,The prerequisite for **4170408N - Information Retrieval** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170408N,prerequisites,4170206N"
+536,Course Syllabus,What is the syllabus and overview for 4170406N - Management of Risk and Quality?,"**Course:** 4170406N: Management of Risk and Quality
+**Department:** 11
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 2 credits
+**Type:** Elective
+**Overview:** Management of Risk and Quality (4170406N) is an official Elective course (2 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"4170406N,syllabus,11"
+537,Course Prerequisites,What are the prerequisites for 4170406N (Management of Risk and Quality)?,The prerequisite for **4170406N - Management of Risk and Quality** is **4170206N**. You must achieve a passing grade (≥ 60% / C) in 4170206N prior to registering.,General,Visual,0.2,"4170406N,prerequisites,4170206N"
+538,Course Syllabus,What is the syllabus and overview for 01407N - Visual Recognition?,"**Course:** 01407N: Visual Recognition
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Visual Recognition (01407N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01407N,syllabus,9"
+539,Course Prerequisites,What are the prerequisites for 01407N (Visual Recognition)?,The prerequisite for **01407N - Visual Recognition** is **01305N**. You must achieve a passing grade (≥ 60% / C) in 01305N prior to registering.,General,Visual,0.2,"01407N,prerequisites,01305N"
+540,Course Syllabus,What is the syllabus and overview for 01408N - Project II?,"**Course:** 01408N: Project II
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project II (01408N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01408N,syllabus,9"
+541,Course Prerequisites,What are the prerequisites for 01408N (Project II)?,The prerequisite for **01408N - Project II** is **01404N**. You must achieve a passing grade (≥ 60% / C) in 01404N prior to registering.,General,Visual,0.2,"01408N,prerequisites,01404N"
+542,Course Syllabus,What is the syllabus and overview for 01402N - Internet of Things I?,"**Course:** 01402N: Internet of Things I
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Internet of Things I (01402N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01402N,syllabus,9"
+543,Course Prerequisites,What are the prerequisites for 01402N (Internet of Things I)?,The prerequisite for **01402N - Internet of Things I** is **01304N**. You must achieve a passing grade (≥ 60% / C) in 01304N prior to registering.,General,Visual,0.2,"01402N,prerequisites,01304N"
+544,Course Syllabus,What is the syllabus and overview for 01406N - AI for Robotics?,"**Course:** 01406N: AI for Robotics
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** AI for Robotics (01406N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01406N,syllabus,9"
+545,Course Prerequisites,What are the prerequisites for 01406N (AI for Robotics)?,"The prerequisite for **01406N - AI for Robotics** is **00109N, 01304N**. You must achieve a passing grade (≥ 60% / C) in 00109N, 01304N prior to registering.",General,Visual,0.2,"01406N,prerequisites,00109N, 01304N"
+546,Course Syllabus,What is the syllabus and overview for 01404N - Project I?,"**Course:** 01404N: Project I
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Core
+**Overview:** Project I (01404N) is an official Core course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01404N,syllabus,9"
+547,Course Prerequisites,What are the prerequisites for 01404N (Project I)?,**01404N - Project I** has **no prerequisites**. It is an introductory/foundation course open for registration.,General,Visual,0.2,"01404N,prerequisites,none"
+548,Course Syllabus,What is the syllabus and overview for 01411N - Embedded Machine Learning?,"**Course:** 01411N: Embedded Machine Learning
+**Department:** 9
+**Study Year:** Year 4 (Level 4)
+**Credit Hours:** 3 credits
+**Type:** Elective
+**Overview:** Embedded Machine Learning (01411N) is an official Elective course (3 credit hours) offered in Year 4 for the Faculty of Computer and Data Sciences curriculum at Alexandria National University.",General,Visual,0.3,"01411N,syllabus,9"
+549,Course Prerequisites,What are the prerequisites for 01411N (Embedded Machine Learning)?,"The prerequisite for **01411N - Embedded Machine Learning** is **00305N, 01304N**. You must achieve a passing grade (≥ 60% / C) in 00305N, 01304N prior to registering.",General,Visual,0.2,"01411N,prerequisites,00305N, 01304N"
