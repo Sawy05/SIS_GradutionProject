@@ -14,25 +14,29 @@ import {
 } from "../types";
 import { DEPARTMENTS, INITIAL_STUDENTS, COURSES, KNOWLEDGE_BASE } from "./sisData";
 
-// Stored student state with local storage fallback
-const STORAGE_KEY_STUDENTS = "sis_students_v2";
 const STORAGE_KEY_TIMETABLES = "sis_personal_timetables_v2";
+
+interface FullDbData {
+  departments: typeof DEPARTMENTS;
+  courses: typeof COURSES;
+  knowledge_base: typeof KNOWLEDGE_BASE;
+  students: Student[];
+  semester_summaries: Record<string, Array<{ semester: string; semester_gpa: number; credits_passed: number; credits_attempted: number }>>;
+  grade_distributions: Record<string, Record<string, number>>;
+  activities: Record<string, { attendance: number; study_hours: number; logins: number }>;
+  passed_courses: Record<string, string[]>;
+  student_course_grades: Record<string, Record<string, string>>;
+}
 
 export class AcademicEngine {
   private students: Student[];
   private personalTimetables: Record<string, TimetableSession[]>;
+  private dbData: FullDbData | null = null;
 
   constructor() {
-    const saved = localStorage.getItem(STORAGE_KEY_STUDENTS);
-    if (saved) {
-      try {
-        this.students = JSON.parse(saved);
-      } catch {
-        this.students = [...INITIAL_STUDENTS];
-      }
-    } else {
-      this.students = [...INITIAL_STUDENTS];
-    }
+    // Always use the real database students as baseline
+    this.students = [...INITIAL_STUDENTS];
+    this.loadFullDatabase();
 
     const savedTT = localStorage.getItem(STORAGE_KEY_TIMETABLES);
     if (savedTT) {
@@ -46,8 +50,19 @@ export class AcademicEngine {
     }
   }
 
-  private saveStudents() {
-    localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify(this.students));
+  private async loadFullDatabase() {
+    try {
+      const res = await fetch("/data/sis_db_full.json");
+      if (res.ok) {
+        const data: FullDbData = await res.json();
+        this.dbData = data;
+        if (data.students && data.students.length > 0) {
+          this.students = data.students;
+        }
+      }
+    } catch {
+      // Fallback silently to embedded INITIAL_STUDENTS
+    }
   }
 
   private saveTimetables() {
@@ -140,17 +155,15 @@ export class AcademicEngine {
     const student = this.getStudentDetail(studentId);
     const gpa = Number(student.gpa || 3.0);
     const yr = Number(student.year_level);
-    const earnedCredits = Math.min(120, yr * 30 + (gpa >= 3.5 ? 6 : 0));
-    const attemptedCredits = earnedCredits + (gpa < 2.0 ? 6 : 0);
 
-    const semesterTrends = [
+    let semesterTrends = [
       { semester: "Fall 2024", semester_gpa: Math.max(1.5, Number((gpa - 0.15).toFixed(2))), credits_passed: 15, credits_attempted: 15 },
       { semester: "Spring 2025", semester_gpa: Math.max(1.6, Number((gpa - 0.05).toFixed(2))), credits_passed: 15, credits_attempted: 15 },
       { semester: "Fall 2025", semester_gpa: Number(gpa.toFixed(2)), credits_passed: 15, credits_attempted: 15 },
       { semester: "Spring 2026", semester_gpa: Math.min(4.0, Number((gpa + 0.1).toFixed(2))), credits_passed: 15, credits_attempted: 15 }
     ].slice(0, Math.max(1, yr * 2));
 
-    const distribution: Record<string, number> = {
+    let distribution: Record<string, number> = {
       "A": gpa >= 3.5 ? 8 : 4,
       "A-": 4,
       "B+": 5,
@@ -162,6 +175,27 @@ export class AcademicEngine {
       "D": gpa < 2.0 ? 1 : 0,
       "F": gpa < 1.9 ? 1 : 0
     };
+
+    let actAttendance = gpa >= 3.5 ? 96.5 : gpa >= 2.5 ? 88.0 : 73.5;
+    let actStudyHours = gpa >= 3.5 ? 18.5 : gpa >= 2.5 ? 12.0 : 6.5;
+    let actLogins = gpa >= 3.5 ? 24 : 14;
+
+    if (this.dbData) {
+      if (this.dbData.semester_summaries && this.dbData.semester_summaries[studentId]) {
+        semesterTrends = this.dbData.semester_summaries[studentId];
+      }
+      if (this.dbData.grade_distributions && this.dbData.grade_distributions[studentId]) {
+        distribution = { ...distribution, ...this.dbData.grade_distributions[studentId] };
+      }
+      if (this.dbData.activities && this.dbData.activities[studentId]) {
+        actAttendance = this.dbData.activities[studentId].attendance;
+        actStudyHours = this.dbData.activities[studentId].study_hours;
+        actLogins = this.dbData.activities[studentId].logins;
+      }
+    }
+
+    const earnedCredits = semesterTrends.reduce((sum, s) => sum + s.credits_passed, 0) || Math.min(120, yr * 30);
+    const attemptedCredits = semesterTrends.reduce((sum, s) => sum + s.credits_attempted, 0) || earnedCredits;
 
     const riskColor: "emerald" | "yellow" | "red" = gpa < 2.0 ? "red" : gpa < 2.5 ? "yellow" : "emerald";
     const riskLevel = gpa < 2.0 ? "High Academic Risk" : gpa < 2.5 ? "Moderate Attention" : "Good Academic Standing";
