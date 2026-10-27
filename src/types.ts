@@ -226,10 +226,43 @@ export interface ChatMessage {
   source?: string;
   similarity?: number | null;
   category?: string;
+  mode?: string;
+  suggestedQuestions?: string[];
+  timestamp?: string;
 }
 
 export interface SimulatedCourse {
   course_name: string;
   credits: number;
   expected_grade: string;
+}
+
+export interface CourseGradeSummary {
+  course_id: string;
+  course_name: string;
+  credits: number;
+  grade?: string;
+  year_level: number;
+  status: "Completed" | "Failed" | "In-Progress";
+}
+
+export interface StudentAcademicContext {
+  student: Student;
+  gpa: number;
+  academic_standing: string;
+  earned_credits: number;
+  total_required_credits: number;
+  remaining_credits: number;
+  completion_pct: number;
+  risk_level: string;
+  passed_courses: CourseGradeSummary[];
+  failed_courses: CourseGradeSummary[];
+  enrolled_courses: CourseGradeSummary[];
+  recent_semester_trends: Array<{ semester: string; semester_gpa: number; credits_passed: number }>;
+  activity_metrics: {
+    avg_attendance_pct: number;
+    avg_study_hours_per_week: number;
+    lms_weekly_logins: number;
+    late_submissions_count: number;
+  };
 }

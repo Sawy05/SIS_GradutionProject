@@ -10,7 +10,9 @@ import {
   RecommendedSpecializedResponse, 
   PersonalTimetableResponse,
   SimulatedCourse,
-  TimetableSession
+  TimetableSession,
+  StudentAcademicContext,
+  CourseGradeSummary
 } from "../types";
 import { DEPARTMENTS, INITIAL_STUDENTS, COURSES, KNOWLEDGE_BASE } from "./sisData";
 
@@ -84,7 +86,20 @@ export class AcademicEngine {
     return DEPARTMENTS;
   }
 
-  public listStudents(search: string = "", departmentId: string = "", limit: number = 40): { students: Student[] } {
+  public listStudents(
+    search: string = "", 
+    departmentId: string = "", 
+    limit: number = 80,
+    yearLevel?: number | "all",
+    standingFilter?: "all" | "honors" | "warning" | "good" | string
+  ): { 
+    students: Student[]; 
+    totalCount: number; 
+    yearCounts: Record<number, number>; 
+    honorsCount: number; 
+    warningCount: number;
+    goodCount: number;
+  } {
     let list = this.students;
     if (departmentId) {
       list = list.filter(s => s.department_id === departmentId);
@@ -97,7 +112,66 @@ export class AcademicEngine {
         s.email.toLowerCase().includes(q)
       );
     }
-    return { students: list.slice(0, limit) };
+
+    // Compute breakdown counts before applying year and standing filters
+    const yearCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    let honorsCount = 0;
+    let warningCount = 0;
+    let goodCount = 0;
+
+    for (const s of list) {
+      const yr = Number(s.year_level);
+      if (yearCounts[yr] !== undefined) yearCounts[yr]++;
+      const g = Number(s.gpa || 0);
+      if (g >= 3.65) honorsCount++;
+      else if (g < 2.0) warningCount++;
+      else goodCount++;
+    }
+
+    // Apply Year Level filter
+    if (yearLevel && yearLevel !== "all") {
+      const targetYr = Number(yearLevel);
+      list = list.filter(s => Number(s.year_level) === targetYr);
+    }
+
+    // Apply Academic Standing / GPA filter (3.65+ or Warning)
+    if (standingFilter && standingFilter !== "all") {
+      if (standingFilter === "honors" || standingFilter === "3.65+") {
+        list = list.filter(s => Number(s.gpa) >= 3.65);
+      } else if (standingFilter === "warning" || standingFilter === "at-risk") {
+        list = list.filter(s => Number(s.gpa) < 2.0);
+      } else if (standingFilter === "good") {
+        list = list.filter(s => Number(s.gpa) >= 2.0 && Number(s.gpa) < 3.65);
+      }
+    }
+
+    const totalCount = list.length;
+
+    // If "all" years are selected and no search term, ensure all 4 years are balanced in the result
+    if ((!yearLevel || yearLevel === "all") && !search.trim()) {
+      const perYearLimit = Math.ceil(limit / 4);
+      const y1 = list.filter(s => Number(s.year_level) === 1).slice(0, perYearLimit);
+      const y2 = list.filter(s => Number(s.year_level) === 2).slice(0, perYearLimit);
+      const y3 = list.filter(s => Number(s.year_level) === 3).slice(0, perYearLimit);
+      const y4 = list.filter(s => Number(s.year_level) === 4).slice(0, perYearLimit);
+      return { 
+        students: [...y1, ...y2, ...y3, ...y4], 
+        totalCount, 
+        yearCounts, 
+        honorsCount, 
+        warningCount, 
+        goodCount 
+      };
+    }
+
+    return { 
+      students: list.slice(0, limit), 
+      totalCount, 
+      yearCounts, 
+      honorsCount, 
+      warningCount, 
+      goodCount 
+    };
   }
 
   public getStudentDetail(studentId: string): Student {
@@ -310,6 +384,110 @@ export class AcademicEngine {
         completion_pct: completionPct
       },
       year_level_breakdown: yearLevelBreakdown
+    };
+  }
+
+  public getStudentAcademicContext(studentId: string): StudentAcademicContext {
+    const student = this.getStudentDetail(studentId);
+    const analytics = this.getAnalytics(studentId);
+    const audit = this.getDegreeAudit(studentId);
+    const isSimStudent = String(student.department_id) === "11";
+    const gpa = Number(student.gpa || 3.0);
+    const yr = Number(student.year_level);
+
+    const passedIds = new Set(this.dbData?.passed_courses?.[studentId] || []);
+    const gradesMap = this.dbData?.student_course_grades?.[studentId] || {};
+
+    const passedCourses: CourseGradeSummary[] = [];
+    const failedCourses: CourseGradeSummary[] = [];
+    const enrolledCourses: CourseGradeSummary[] = [];
+
+    for (const c of COURSES) {
+      const isSim = this.isSimCourse(c.course_id, c.department_id);
+      if (isSim !== isSimStudent) continue;
+
+      const grade = gradesMap[c.course_id];
+      if (passedIds.has(c.course_id)) {
+        passedCourses.push({
+          course_id: c.course_id,
+          course_name: c.course_name,
+          credits: c.credits,
+          grade: grade || (gpa >= 3.65 ? "A" : gpa >= 3.0 ? "B+" : "B"),
+          year_level: c.year_level,
+          status: "Completed"
+        });
+      } else if (grade === "F" || (c.year_level < yr && !passedIds.has(c.course_id) && gpa < 2.0 && c.is_required)) {
+        failedCourses.push({
+          course_id: c.course_id,
+          course_name: c.course_name,
+          credits: c.credits,
+          grade: grade || "F",
+          year_level: c.year_level,
+          status: "Failed"
+        });
+      } else if (c.year_level === yr) {
+        enrolledCourses.push({
+          course_id: c.course_id,
+          course_name: c.course_name,
+          credits: c.credits,
+          year_level: c.year_level,
+          status: "In-Progress"
+        });
+      }
+    }
+
+    if (passedCourses.length === 0 && yr > 1) {
+      COURSES.filter(c => c.year_level < yr && this.isSimCourse(c.course_id, c.department_id) === isSimStudent)
+        .slice(0, (yr - 1) * 8)
+        .forEach(c => {
+          passedCourses.push({
+            course_id: c.course_id,
+            course_name: c.course_name,
+            credits: c.credits,
+            grade: gpa >= 3.6 ? "A" : gpa >= 3.0 ? "B+" : "B",
+            year_level: c.year_level,
+            status: "Completed"
+          });
+        });
+    }
+
+    if (gpa < 2.0 && failedCourses.length === 0) {
+      const failedSample = COURSES.find(c => c.year_level <= yr && this.isSimCourse(c.course_id, c.department_id) === isSimStudent && c.is_required);
+      if (failedSample) {
+        failedCourses.push({
+          course_id: failedSample.course_id,
+          course_name: failedSample.course_name,
+          credits: failedSample.credits,
+          grade: "F",
+          year_level: failedSample.year_level,
+          status: "Failed"
+        });
+      }
+    }
+
+    return {
+      student,
+      gpa,
+      academic_standing: student.academic_standing,
+      earned_credits: audit.graduation_summary.earned_credits,
+      total_required_credits: audit.graduation_summary.total_required_credits,
+      remaining_credits: audit.graduation_summary.remaining_credits,
+      completion_pct: audit.graduation_summary.overall_completion_pct,
+      risk_level: analytics.risk_assessment.risk_level,
+      passed_courses: passedCourses,
+      failed_courses: failedCourses,
+      enrolled_courses: enrolledCourses,
+      recent_semester_trends: analytics.semester_trends.map(s => ({
+        semester: s.semester,
+        semester_gpa: s.semester_gpa,
+        credits_passed: s.credits_passed
+      })),
+      activity_metrics: {
+        avg_attendance_pct: analytics.activity_metrics.avg_attendance_pct,
+        avg_study_hours_per_week: analytics.activity_metrics.avg_study_hours_per_week,
+        lms_weekly_logins: analytics.activity_metrics.lms_weekly_logins,
+        late_submissions_count: analytics.activity_metrics.late_submissions_count
+      }
     };
   }
 
