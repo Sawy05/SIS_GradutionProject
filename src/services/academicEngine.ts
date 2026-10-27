@@ -108,12 +108,32 @@ export class AcademicEngine {
     return s;
   }
 
+  private isSimCourse(courseId: string, departmentId?: string): boolean {
+    const cid = String(courseId || "").toUpperCase();
+    return String(departmentId) === "11" || cid.startsWith("417") || cid.includes("SIM");
+  }
+
   public getRecommendations(studentId: string, topN: number = 6): RecommendationsResponse {
     const student = this.getStudentDetail(studentId);
     const yr = Number(student.year_level);
+    const isSimStudent = String(student.department_id) === "11";
+    const passedSet = new Set(this.dbData?.passed_courses?.[studentId] || []);
 
-    // Eligible courses: courses in student's department or core, year <= current year + 1
-    const eligible = COURSES.filter(c => c.year_level <= yr + 1);
+    // Strict SIM isolation: only SIM students (department_id === "11") can register/be recommended SIM courses
+    const eligible = COURSES.filter(c => {
+      const simCourse = this.isSimCourse(c.course_id, c.department_id);
+      if (simCourse && !isSimStudent) return false;
+      if (!simCourse && isSimStudent) return false;
+      if (passedSet.has(c.course_id)) return false;
+      return c.year_level <= yr + 1;
+    }).sort((a, b) => {
+      const aDeptMatch = String(a.department_id) === String(student.department_id) ? 0 : 1;
+      const bDeptMatch = String(b.department_id) === String(student.department_id) ? 0 : 1;
+      if (aDeptMatch !== bDeptMatch) return aDeptMatch - bDeptMatch;
+      const aYrDiff = Math.abs(a.year_level - yr);
+      const bYrDiff = Math.abs(b.year_level - yr);
+      return aYrDiff - bYrDiff;
+    });
 
     const recs: Recommendation[] = eligible.slice(0, topN).map((c, idx) => {
       let score = 95 - idx * 3;
@@ -136,7 +156,7 @@ export class AcademicEngine {
         year_level: c.year_level,
         department_name: student.department_name,
         recommendation_score: score,
-        rationale: `Curriculum alignment for Year ${student.year_level}. Aligns with ${student.mbti} analytical traits and ${student.learning_style} learning preference.`,
+        rationale: `Curriculum alignment for Year ${student.year_level} (${student.department_name}). Aligns with ${student.mbti} analytical traits and ${student.learning_style} learning preference.`,
         prerequisite_status: c.prerequisite_course_id ? `Satisfied (${c.prerequisite_course_id})` : "None Required",
         tags,
         historical_pass_rate: 88 + (idx % 8)
@@ -146,7 +166,7 @@ export class AcademicEngine {
     return {
       student_id: studentId,
       total_eligible_courses: eligible.length,
-      algorithm_notes: "Engine evaluated prerequisite DAG satisfaction, MBTI study traits, credit constraints, and historical department grade trajectories.",
+      algorithm_notes: "Engine evaluated strict program eligibility (SIM courses exclusive to SIM students), prerequisite DAG satisfaction, MBTI study traits, credit constraints, and historical department grade trajectories.",
       top_recommendations: recs
     };
   }
@@ -296,8 +316,16 @@ export class AcademicEngine {
   public getPrerequisiteTree(studentId: string): PrerequisiteTreeResponse {
     const student = this.getStudentDetail(studentId);
     const yr = Number(student.year_level);
+    const isSimStudent = String(student.department_id) === "11";
 
-    const nodes = COURSES.map((c) => {
+    const filteredCourses = COURSES.filter((c) => {
+      const simCourse = this.isSimCourse(c.course_id, c.department_id);
+      if (simCourse && !isSimStudent) return false;
+      if (!simCourse && isSimStudent) return false;
+      return isSimStudent ? true : (String(c.department_id) === String(student.department_id) || c.year_level <= 1);
+    });
+
+    const nodes = filteredCourses.map((c) => {
       let status: "Completed" | "In-Progress" | "Unlocked" | "Locked" = "Locked";
       if (c.year_level < yr) {
         status = "Completed";
@@ -357,123 +385,85 @@ export class AcademicEngine {
 
   public getGroupTimetable(departmentId: string = "10", yearLevel: number = 1, groupId: number = 1): GroupTimetableResponse {
     const dept = DEPARTMENTS.find(d => d.department_id === String(departmentId)) || DEPARTMENTS[2];
-    
-    const sessions: TimetableSession[] = [
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-1`,
-        session_type: "Lecture",
-        course_id: "DSAI101",
-        course_name: "Introduction to Data Science & AI",
-        credits: 3,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-DSAI101-0${groupId}`,
-        section_number: groupId,
-        room_number: "Lecture Hall A",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Sunday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Ahmed El-Sayed"
-      },
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-2`,
-        session_type: "Lab",
-        course_id: "DSAI101",
-        course_name: "Introduction to Data Science & AI",
-        credits: 3,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-DSAI101-0${groupId}`,
-        room_number: "AI & Robotics Lab 1",
-        building: "Computing Labs Center",
-        day_of_week: "Sunday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Eng. Mohamed Taha"
-      },
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-3`,
-        session_type: "Lecture",
-        course_id: "CS111",
-        course_name: "Structured Programming (C++)",
-        credits: 3,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-CS111-0${groupId}`,
-        section_number: groupId,
-        room_number: "Lecture Hall B",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Monday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Mahmoud Hassan"
-      },
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-4`,
-        session_type: "Lecture",
-        course_id: "MATH101",
-        course_name: "Calculus & Linear Algebra I",
-        credits: 3,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-MATH101-0${groupId}`,
-        section_number: groupId,
-        room_number: "Lecture Hall C",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Tuesday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Prof. Nadia Roushdy"
-      },
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-5`,
-        session_type: "Lecture",
-        course_id: "STAT101",
-        course_name: "Probability & Applied Statistics",
-        credits: 3,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-STAT101-0${groupId}`,
-        section_number: groupId,
-        room_number: "Lecture Hall A",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Wednesday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Mona Farouk"
-      },
-      {
-        session_id: `SES-${dept.department_id}-${yearLevel}-G${groupId}-6`,
-        session_type: "Lecture",
-        course_id: "HUM101",
-        course_name: "Technical Communication & Ethics",
-        credits: 2,
-        year_level: yearLevel,
-        department_name: dept.department_name,
-        section_id: `SEC-HUM101-0${groupId}`,
-        section_number: groupId,
-        room_number: "Lecture Hall D",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Thursday",
-        start_time: "13:00",
-        end_time: "15:00",
-        period: 3,
-        instructor_name: "Dr. Khaled Abdel-Rahman"
-      }
+    const isSimDept = String(dept.department_id) === "11";
+    const yr = Number(yearLevel) || 1;
+    const grp = Number(groupId) || 1;
+
+    const candidateCourses = COURSES.filter(c => {
+      const simCourse = this.isSimCourse(c.course_id, c.department_id);
+      if (simCourse !== isSimDept) return false;
+      return c.year_level === yr;
+    }).sort((a, b) => {
+      const aMatch = String(a.department_id) === String(dept.department_id) ? 0 : 1;
+      const bMatch = String(b.department_id) === String(dept.department_id) ? 0 : 1;
+      return aMatch - bMatch;
+    });
+
+    const picked = candidateCourses.slice(0, 5);
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
+    const slots = [
+      { period: 1, start: "08:30", end: "10:30" },
+      { period: 2, start: "10:45", end: "12:45" },
+      { period: 3, start: "13:00", end: "15:00" },
+      { period: 4, start: "15:15", end: "17:15" }
     ];
+    const instructors = isSimDept
+      ? ["Assoc. Prof. Dr. Ahmed Sherif Zekri", "Dr. Marcus Vance", "Dr. Sarah Jenkins"]
+      : ["Prof. Dr. Tamer Helmy", "Dr. Elena Rostova", "Dr. Tariq Al-Mansoor", "Dr. Sarah Jenkins"];
+
+    const sessions: TimetableSession[] = [];
+    picked.forEach((c, idx) => {
+      const day = days[(idx + grp - 1) % days.length];
+      const slot = slots[(idx + grp - 1) % 3];
+      sessions.push({
+        session_id: `SES-${dept.department_id}-${yr}-G${grp}-${idx + 1}`,
+        session_type: "Lecture",
+        course_id: c.course_id,
+        course_name: c.course_name,
+        credits: c.credits,
+        year_level: yr,
+        department_name: dept.department_name,
+        section_id: `SEC-${c.course_id}-0${grp}`,
+        section_number: grp,
+        room_number: `LH10${(idx % 2) + 1}`,
+        building: "FCDS Main Building",
+        day_of_week: day,
+        start_time: slot.start,
+        end_time: slot.end,
+        period: slot.period,
+        instructor_name: instructors[idx % instructors.length]
+      });
+    });
+
+    if (picked.length > 0) {
+      const labCourse = picked[0];
+      const labSlot = slots[1];
+      sessions.push({
+        session_id: `SES-${dept.department_id}-${yr}-G${grp}-LAB`,
+        session_type: "Lab",
+        course_id: labCourse.course_id,
+        course_name: labCourse.course_name,
+        credits: labCourse.credits,
+        year_level: yr,
+        department_name: dept.department_name,
+        section_id: `SEC-${labCourse.course_id}-0${grp}`,
+        section_number: grp,
+        room_number: "LAB401",
+        building: "FCDS Tech Wing",
+        day_of_week: days[(grp + 1) % days.length],
+        start_time: labSlot.start,
+        end_time: labSlot.end,
+        period: labSlot.period,
+        instructor_name: instructors[0]
+      });
+    }
 
     return {
       status: "success",
-      timetable_id: `TT-2026-${dept.code_prefix}-Y${yearLevel}-G${groupId}`,
+      timetable_id: `TT-2026-${dept.code_prefix}-Y${yr}-G${grp}`,
       department: { department_id: dept.department_id, department_name: dept.department_name },
-      year_level: Number(yearLevel),
-      group_id: Number(groupId),
+      year_level: yr,
+      group_id: grp,
       filters: {
         departments: DEPARTMENTS,
         available_years: [1, 2, 3, 4],
@@ -481,11 +471,11 @@ export class AcademicEngine {
       },
       summary: {
         total_sessions: sessions.length,
-        unique_courses: 5,
-        total_credits: 14,
-        active_days: 4,
-        lectures: 5,
-        labs: 1
+        unique_courses: picked.length,
+        total_credits: picked.reduce((s, c) => s + c.credits, 0),
+        active_days: new Set(sessions.map(s => s.day_of_week)).size,
+        lectures: sessions.filter(s => s.session_type === "Lecture").length,
+        labs: sessions.filter(s => s.session_type === "Lab").length
       },
       sessions
     };
@@ -493,192 +483,63 @@ export class AcademicEngine {
 
   public getRecommendedSpecializedTimetable(studentId: string = "FCDS20260001"): RecommendedSpecializedResponse {
     const student = this.getStudentDetail(studentId);
+    const isSimStudent = String(student.department_id) === "11";
+    const yr = Number(student.year_level) || 1;
+    const recs = this.getRecommendations(studentId, 5).top_recommendations;
 
-    const morningSessions: TimetableSession[] = [
-      {
-        session_id: "SES-10-1-G1-1",
-        session_type: "Lecture",
-        course_id: "DSAI101",
-        course_name: "Introduction to Data Science & AI",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 98,
-        section_id: "SEC-DSAI101-01",
-        section_number: 1,
-        room_number: "Lecture Hall A",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Sunday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Ahmed El-Sayed"
-      },
-      {
-        session_id: "SES-10-1-G1-3",
-        session_type: "Lecture",
-        course_id: "CS111",
-        course_name: "Structured Programming (C++)",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 95,
-        section_id: "SEC-CS111-01",
-        section_number: 1,
-        room_number: "Lecture Hall B",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Monday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Mahmoud Hassan"
-      },
-      {
-        session_id: "SES-10-1-G1-4",
-        session_type: "Lecture",
-        course_id: "MATH101",
-        course_name: "Calculus & Linear Algebra I",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 92,
-        section_id: "SEC-MATH101-01",
-        section_number: 1,
-        room_number: "Lecture Hall C",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Tuesday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Prof. Nadia Roushdy"
-      },
-      {
-        session_id: "SES-10-1-G1-5",
-        session_type: "Lecture",
-        course_id: "STAT101",
-        course_name: "Probability & Applied Statistics",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 94,
-        section_id: "SEC-STAT101-01",
-        section_number: 1,
-        room_number: "Lecture Hall A",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Wednesday",
-        start_time: "08:30",
-        end_time: "10:30",
-        period: 1,
-        instructor_name: "Dr. Mona Farouk"
-      },
-      {
-        session_id: "SES-10-1-G1-6",
-        session_type: "Lecture",
-        course_id: "HUM101",
-        course_name: "Technical Communication & Ethics",
-        credits: 2,
-        year_level: 1,
-        match_percentage: 92,
-        section_id: "SEC-HUM101-01",
-        section_number: 1,
-        room_number: "Lecture Hall D",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Thursday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Dr. Khaled Abdel-Rahman"
-      }
-    ];
+    const fallbackCourses = COURSES.filter(c => {
+      const simCourse = this.isSimCourse(c.course_id, c.department_id);
+      return simCourse === isSimStudent && c.year_level === yr;
+    }).slice(0, 5);
 
-    const balancedSessions: TimetableSession[] = [
-      {
-        session_id: "SES-10-1-G2-1",
-        session_type: "Lecture",
-        course_id: "DSAI101",
-        course_name: "Introduction to Data Science & AI",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 95,
-        section_id: "SEC-DSAI101-02",
-        section_number: 2,
-        room_number: "Lecture Hall B",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Sunday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Dr. Ahmed El-Sayed"
-      },
-      {
-        session_id: "SES-10-1-G2-3",
-        session_type: "Lecture",
-        course_id: "CS111",
-        course_name: "Structured Programming (C++)",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 92,
-        section_id: "SEC-CS111-02",
-        section_number: 2,
-        room_number: "Lecture Hall C",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Monday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Dr. Mahmoud Hassan"
-      },
-      {
-        session_id: "SES-10-1-G2-4",
-        session_type: "Lecture",
-        course_id: "MATH101",
-        course_name: "Calculus & Linear Algebra I",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 90,
-        section_id: "SEC-MATH101-02",
-        section_number: 2,
-        room_number: "Lecture Hall D",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Tuesday",
-        start_time: "13:00",
-        end_time: "15:00",
-        period: 3,
-        instructor_name: "Prof. Nadia Roushdy"
-      },
-      {
-        session_id: "SES-10-1-G2-5",
-        session_type: "Lecture",
-        course_id: "STAT101",
-        course_name: "Probability & Applied Statistics",
-        credits: 3,
-        year_level: 1,
-        match_percentage: 91,
-        section_id: "SEC-STAT101-02",
-        section_number: 2,
-        room_number: "Lecture Hall B",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Wednesday",
-        start_time: "10:45",
-        end_time: "12:45",
-        period: 2,
-        instructor_name: "Dr. Mona Farouk"
-      },
-      {
-        session_id: "SES-10-1-G2-6",
-        session_type: "Lecture",
-        course_id: "HUM101",
-        course_name: "Technical Communication & Ethics",
-        credits: 2,
-        year_level: 1,
-        match_percentage: 90,
-        section_id: "SEC-HUM101-02",
-        section_number: 2,
-        room_number: "Lecture Hall A",
-        building: "Faculty Main Complex (FCDS)",
-        day_of_week: "Thursday",
-        start_time: "13:00",
-        end_time: "15:00",
-        period: 3,
-        instructor_name: "Dr. Khaled Abdel-Rahman"
-      }
-    ];
+    const chosenCourses = recs.length >= 5
+      ? recs.map(r => ({ course_id: r.course_id, course_name: r.course_name, credits: r.credits, year_level: r.year_level, score: r.recommendation_score }))
+      : fallbackCourses.map((c, i) => ({ course_id: c.course_id, course_name: c.course_name, credits: c.credits, year_level: c.year_level, score: 95 - i * 2 }));
+
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
+    const instructors = isSimStudent
+      ? ["Assoc. Prof. Dr. Ahmed Sherif Zekri", "Dr. Marcus Vance", "Dr. Sarah Jenkins"]
+      : ["Prof. Dr. Tamer Helmy", "Dr. Elena Rostova", "Dr. Tariq Al-Mansoor", "Dr. Sarah Jenkins"];
+
+    const morningSessions: TimetableSession[] = chosenCourses.map((c, idx) => ({
+      session_id: `SES-${student.department_id}-${yr}-G1-${idx + 1}`,
+      session_type: "Lecture",
+      course_id: c.course_id,
+      course_name: c.course_name,
+      credits: c.credits,
+      year_level: c.year_level,
+      match_percentage: c.score,
+      section_id: `SEC-${c.course_id}-01`,
+      section_number: 1,
+      room_number: `LH10${(idx % 2) + 1}`,
+      building: "FCDS Main Building",
+      day_of_week: days[idx % days.length],
+      start_time: idx % 2 === 0 ? "08:30" : "10:45",
+      end_time: idx % 2 === 0 ? "10:30" : "12:45",
+      period: (idx % 2) + 1,
+      instructor_name: instructors[idx % instructors.length]
+    }));
+
+    const balancedSessions: TimetableSession[] = chosenCourses.map((c, idx) => ({
+      session_id: `SES-${student.department_id}-${yr}-G2-${idx + 1}`,
+      session_type: "Lecture",
+      course_id: c.course_id,
+      course_name: c.course_name,
+      credits: c.credits,
+      year_level: c.year_level,
+      match_percentage: Math.max(85, c.score - 2),
+      section_id: `SEC-${c.course_id}-02`,
+      section_number: 2,
+      room_number: `LH20${(idx % 2) + 1}`,
+      building: "FCDS Main Building",
+      day_of_week: days[idx % days.length],
+      start_time: idx % 2 === 0 ? "10:45" : "13:00",
+      end_time: idx % 2 === 0 ? "12:45" : "15:00",
+      period: (idx % 2) + 2,
+      instructor_name: instructors[idx % instructors.length]
+    }));
+
+    const totalCreds = chosenCourses.reduce((s, c) => s + c.credits, 0);
 
     return {
       status: "success",
@@ -691,13 +552,13 @@ export class AcademicEngine {
           subtitle: "Prioritizes core major curriculum during peak morning focus hours (08:30–12:45).",
           badge_style: "primary",
           is_active_schedule: true,
-          total_courses: 5,
-          total_credits: 14,
-          active_days: 4,
+          total_courses: morningSessions.length,
+          total_credits: totalCreds,
+          active_days: new Set(morningSessions.map(s => s.day_of_week)).size,
           average_match_score: 94.2,
           badges: [
             { icon: "zap", title: "Gap Optimized", text: "Minimal idle gaps between classes (< 40 mins)", color: "emerald" },
-            { icon: "scale", title: "Workload Balanced", text: "Evenly spaced across 4 study days (no overloaded days)", color: "blue" },
+            { icon: "scale", title: "Workload Balanced", text: "Evenly spaced across study days (no overloaded days)", color: "blue" },
             { icon: "target", title: "Specialization Fit", text: "94.2% average syllabus & track alignment", color: "purple" },
             { icon: "shield", title: "100% Conflict-Free", text: "Zero collision across all registered lectures & labs", color: "emerald" }
           ],
@@ -710,9 +571,9 @@ export class AcademicEngine {
           subtitle: "Spaces lectures evenly across balanced mid-day windows with dedicated lab intervals.",
           badge_style: "secondary",
           is_active_schedule: false,
-          total_courses: 5,
-          total_credits: 14,
-          active_days: 4,
+          total_courses: balancedSessions.length,
+          total_credits: totalCreds,
+          active_days: new Set(balancedSessions.map(s => s.day_of_week)).size,
           average_match_score: 91.6,
           badges: [
             { icon: "zap", title: "Gap Optimized", text: "Predictable lunch and self-study breaks", color: "emerald" },
@@ -729,9 +590,11 @@ export class AcademicEngine {
 
   public getPersonalTimetable(studentId: string = "FCDS20260001"): PersonalTimetableResponse {
     const student = this.getStudentDetail(studentId);
+    const isSimStudent = String(student.department_id) === "11";
     let sessions = this.personalTimetables[studentId];
-    if (!sessions || sessions.length === 0) {
-      // Default to morning track sessions
+    const hasInvalidSimSession = sessions?.some(s => this.isSimCourse(s.course_id) !== isSimStudent);
+    if (!sessions || sessions.length === 0 || hasInvalidSimSession) {
+      // Default to morning track sessions matching student's SIM/non-SIM eligibility
       const rec = this.getRecommendedSpecializedTimetable(studentId);
       sessions = rec.recommended_options[0].sessions;
       this.personalTimetables[studentId] = sessions;
@@ -757,6 +620,19 @@ export class AcademicEngine {
   }
 
   public applyRecommendedTimetable(studentId: string, optionId: string, sectionIds: string[]) {
+    const student = this.getStudentDetail(studentId);
+    const isSimStudent = String(student.department_id) === "11";
+    for (const secId of sectionIds || []) {
+      const code = secId.replace(/^SEC-/, "").replace(/-\d+$/, "");
+      const courseObj = COURSES.find(c => c.course_id === code);
+      const simCourse = this.isSimCourse(code, courseObj?.department_id);
+      if (simCourse && !isSimStudent) {
+        throw new Error(`Registration denied: Course ${code} belongs to the SIM program. Only SIM students can register for SIM courses.`);
+      }
+      if (!simCourse && isSimStudent) {
+        throw new Error(`Registration denied: SIM students can only register for SIM program courses (attempted ${code}).`);
+      }
+    }
     const rec = this.getRecommendedSpecializedTimetable(studentId);
     const selected = rec.recommended_options.find(o => o.option_id === optionId) || rec.recommended_options[0];
     this.personalTimetables[studentId] = selected.sessions;
